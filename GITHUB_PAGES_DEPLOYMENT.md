@@ -43,6 +43,10 @@ When deploying to GitHub Pages with a subdirectory (like `/cosmetics-shop/`), sp
    
 2. **Vite Base Configuration**: The `vite.config.ts` file automatically sets the correct base path when building for GitHub Pages
 
+3. **SPA Routing**: For Single Page Applications like React with React Router, GitHub Pages requires special handling for client-side routing. This project includes:
+   - A `404.html` file in the public directory that handles direct route access
+   - Modifications to `index.html` to handle redirects from `404.html`
+
 ## Environment Specifics
 
 - The deployment is configured using the `GITHUB_PAGES` environment variable
@@ -64,6 +68,11 @@ If you want to manually trigger a deployment (without pushing to main):
 3. Check the GitHub Pages deployment status in the repository settings
 4. Ensure you're using `<Link>` components for internal navigation instead of `<a>` tags with absolute paths
 
+### If routes don't work when accessed directly or after refresh:
+1. Make sure the `404.html` file exists in your `public` directory
+2. Verify that GitHub Pages is configured to use the correct branch
+3. Wait a few minutes after deployment for GitHub Pages to update
+
 ### If the build fails in GitHub Actions:
 1. Check the Actions logs for specific error messages
 2. Ensure all dependencies are properly specified in package.json
@@ -74,4 +83,5 @@ If you want to manually trigger a deployment (without pushing to main):
 - The first deployment may take a few minutes to become available
 - Subsequent deployments will update the site automatically
 - All internal navigation should use React Router's `<Link>` component for proper subdirectory handling
+- Direct access to routes (like `/products`) will work after the `404.html` configuration is active
 - After making changes to fix navigation issues, rebuild and redeploy by pushing changes to main branch

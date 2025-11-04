@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Page Not Found - cosmetics-shop</title>
+  </head>
+  <body>
+    <script>
+      // Single Page Apps for GitHub Pages redirect
+      (function(l) {
+        // Set the path segments to keep (adjust for your repo name)
+        // Since our repo is 'cosmetics-shop', we keep 1 segment after base
+        if (l.search && l.pathname.startsWith('/cosmetics-shop/')) {
+          // Redirect with query string and hash preserved
+          var newUrl = l.pathname.replace('/cosmetics-shop/', '') + l.search + l.hash;
+          sessionStorage.redirect = newUrl;
+          window.location.replace('/cosmetics-shop/');
+        } else if (!l.search && l.hash && l.pathname.startsWith('/cosmetics-shop/')) {
+          // Direct access to a route with hash
+          sessionStorage.redirect = l.hash;
+          window.location.replace('/cosmetics-shop/');
+        } else if (!l.search && !l.hash && l.pathname !== '/cosmetics-shop/' && l.pathname !== '/cosmetics-shop/index.html') {
+          // Direct access to a route without hash or query
+          sessionStorage.redirect = l.pathname.replace('/cosmetics-shop/', '') + l.hash;
+          window.location.replace('/cosmetics-shop/');
+        }
+      })(window.location);
+    </script>
+  </body>
+</html>
