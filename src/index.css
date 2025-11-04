@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #2d3748;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Cosmetics Shop Color Variables */
+:root {
+  /* Primary Colors */
+  --cosmetic-pink-50: #fdf2f8;
+  --cosmetic-pink-100: #fce7f3;
+  --cosmetic-pink-200: #fbcfe8;
+  --cosmetic-pink-300: #f9a8d4;
+  --cosmetic-pink-400: #f472b6;
+  --cosmetic-pink-500: #ec4899;
+  --cosmetic-pink-600: #db2777;
+  --cosmetic-pink-700: #be185d;
+  --cosmetic-pink-800: #9d174d;
+  --cosmetic-pink-900: #831843;
+
+  --cosmetic-purple-50: #faf5ff;
+  --cosmetic-purple-100: #f3e8ff;
+  --cosmetic-purple-200: #e9d5ff;
+  --cosmetic-purple-300: #d8b4fe;
+  --cosmetic-purple-400: #c084fc;
+  --cosmetic-purple-500: #a855f7;
+  --cosmetic-purple-600: #9333ea;
+  --cosmetic-purple-700: #7e22ce;
+  --cosmetic-purple-800: #6b21a8;
+  --cosmetic-purple-900: #581c87;
+
+  --cosmetic-rose-50: #fdf1f2;
+  --cosmetic-rose-100: #ffe4e6;
+  --cosmetic-rose-200: #fecdd3;
+  --cosmetic-rose-300: #fda4af;
+  --cosmetic-rose-400: #fb7185;
+  --cosmetic-rose-500: #f43f5e;
+  --cosmetic-rose-600: #e11d48;
+  --cosmetic-rose-700: #be123c;
+  --cosmetic-rose-800: #9f1239;
+  --cosmetic-rose-900: #881337;
+
+  --cosmetic-beige-50: #fdf8f6;
+  --cosmetic-beige-100: #fdefe6;
+  --cosmetic-beige-200: #feebd0;
+  --cosmetic-beige-300: #fcd9bd;
+  --cosmetic-beige-400: #f7c3a1;
+  --cosmetic-beige-500: #f0a97d;
+  --cosmetic-beige-600: #e0835e;
+  --cosmetic-beige-700: #c25e3f;
+  --cosmetic-beige-800: #a3462d;
+  --cosmetic-beige-900: #883620;
+
+  --pastel-pink: #ffbfbe;
+  --soft-pink: #f8c8dc;
+  --light-pink: #e8ccd7;
+  --beige: #f5e9e2;
+
+  /* Improved light theme colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #fdf2f8;
+  --bg-tertiary: #faf5ff;
+  --text-primary: #4a1e4f;
+  --text-secondary: #7d1d8c;
+  --text-accent: #db2777;
+  --border: #f472b6;
+  --card-bg: #ffffff;
+  --card-bg-alt: #fdf2f8;
+  --card-shadow: 0 4px 6px -1px rgba(236, 72, 153, 0.15),
+    0 2px 4px -1px rgba(236, 72, 153, 0.08);
+
+  /* Improved dark theme overrides */
+  :root:where(.dark, .dark *) {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --bg-tertiary: #0f3460;
+    --text-primary: #e8e8f4;
+    --text-secondary: #d0bfff;
+    --text-accent: #f8c8dc;
+    --border: #a855f7;
+    --card-bg: #16213e;
+    --card-bg-alt: #0f3460;
+    --card-shadow: 0 10px 15px -3px rgba(107, 33, 168, 0.3),
+      0 4px 6px -2px rgba(107, 33, 168, 0.2);
+  }
+}
+
+/* Base styles */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+a {
+  font-weight: 500;
+  color: var(--cosmetic-pink-600);
+  text-decoration: inherit;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--cosmetic-pink-700);
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 2px solid var(--cosmetic-purple-500);
+  outline-offset: 2px;
+}
+
+input {
+  border: 2px solid var(--cosmetic-pink-300);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cosmetic-pink-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cosmetic-pink-500);
+}
+
+/* Utilities */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.gradient-bg {
+  background: linear-gradient(
+    135deg,
+    var(--cosmetic-pink-100),
+    var(--cosmetic-purple-100)
+  );
+}
+
+.dark .gradient-bg {
+  background: linear-gradient(135deg, #4a1e4f, #2d155e);
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 0.5rem;
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--cosmetic-pink-500),
+    var(--cosmetic-purple-500)
+  );
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--cosmetic-pink-600);
+  border: 2px solid var(--cosmetic-pink-300);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--cosmetic-pink-50);
+  border-color: var(--cosmetic-pink-400);
+}
+
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--cosmetic-pink-500),
+    var(--cosmetic-purple-500)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+/* Fade-in animation */
+.fade-in-element {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in-element.opacity-100 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive improvements */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Product card specific styles */
+.product-card {
+  transition: all 0.3s ease;
+  border: 1px solid var(--border);
+}
+
+.product-card:hover {
+  border-color: var(--cosmetic-pink-300);
+  box-shadow: var(--card-shadow);
+}
