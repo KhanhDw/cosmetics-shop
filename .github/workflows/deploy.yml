@@ -17,6 +17,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,11 +32,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Set environment variable for GitHub Pages
-        run: echo "GITHUB_PAGES=true" >> $GITHUB_ENV
-
-      - name: Build project
+      - name: Build project for GitHub Pages
         run: npm run build
+        env:
+          GITHUB_PAGES: "true"
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
