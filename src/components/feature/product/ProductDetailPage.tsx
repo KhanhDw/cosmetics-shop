@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Product, Review } from "@/types";
 
 const ProductDetailPage: React.FC = () => {
@@ -135,21 +135,21 @@ const ProductDetailPage: React.FC = () => {
           <nav className="text-sm font-light">
             <ol className="flex items-center space-x-2">
               <li>
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   className="text-[color:var(--text-accent)] hover:underline"
                 >
                   Trang chủ
-                </a>
+                </Link>
               </li>
               <li className="text-[color:var(--text-secondary)]">/</li>
               <li>
-                <a
-                  href="/category"
+                <Link
+                  to="/category"
                   className="text-[color:var(--text-accent)] hover:underline"
                 >
                   Dưỡng da
-                </a>
+                </Link>
               </li>
               <li className="text-[color:var(--text-secondary)]">/</li>
               <li className="text-[color:var(--text-secondary)]">Kem dưỡng trắng da ban đêm</li>

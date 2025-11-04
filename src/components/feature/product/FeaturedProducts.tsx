@@ -66,6 +66,7 @@ const FeaturedProducts: React.FC = () => {
 
   const handleAddToCart = (id: number) => {
     // Here you would typically dispatch an action to add the item to cart
+    console.log('Adding to cart:', id);
   };
 
   return (
