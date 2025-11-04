@@ -171,7 +171,8 @@
     "newsletter": "Newsletter",
     "newsletter_placeholder": "Enter your email",
     "subscribe": "Subscribe",
-    "copyright": "© {{year}} Cosmetics Shop. All rights reserved."
+    "copyright": "© {{year}} Cosmetics Shop. All rights reserved.",
+    "description": "Premium beauty products crafted with love and care for your daily skincare routine."
   },
   "cart": {
     "title": "Shopping Cart",
@@ -304,6 +305,7 @@
     "my_orders": "My Orders",
     "addresses": "Shipping Addresses",
     "wishlist": "Wishlist",
+    "notifications": "Notifications",
     "change_password": "Change Password",
     "save_changes": "Save Changes",
     "edit": "Edit",
@@ -322,5 +324,33 @@
     "greeting": "Hello, {{name}}",
     "manage_account": "Manage your account",
     "default_user_name": "User"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "promotions": "Promotions",
+    "product_reviews": "Product Reviews",
+    "orders": "Orders",
+    "receive_promotions": "Receive promotion notifications",
+    "receive_product_reviews": "Receive product review notifications",
+    "email_notifications": "Email notifications",
+    "push_notifications": "Push notifications",
+    "save_settings": "Save Settings",
+    "mark_all_read": "Mark all as read",
+    "no_notifications": "No notifications",
+    "view_all": "View all",
+    "all_notifications_subtitle": "You have {{count}} notifications",
+    "total": "Total",
+    "unread": "Unread",
+    "high_priority": "High Priority",
+    "medium_priority": "Medium Priority",
+    "low_priority": "Low Priority",
+    "all_priority": "All Priorities",
+    "unread_badge": "Unread",
+    "mark_read": "Mark as Read",
+    "details": "Details",
+    "search_placeholder": "Search notifications...",
+    "no_notifications_title": "No notifications",
+    "no_notifications_subtitle": "You'll see new notifications here",
+    "orders": "Orders"
   }
 }

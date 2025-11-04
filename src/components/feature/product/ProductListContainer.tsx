@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Product } from '@/types';
 import ProductListPresentational from './ProductListPresentational';
 
@@ -195,18 +195,33 @@ const ProductListContainer: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   
   // Filter products by category
-  const filteredProducts = selectedCategory === 'all' 
-    ? products 
-    : products.filter(product => product.category === selectedCategory);
+  const filteredProducts = useMemo(() => 
+    selectedCategory === 'all' 
+      ? products 
+      : products.filter(product => product.category === selectedCategory),
+    [products, selectedCategory]
+  );
 
-  // Pagination
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentProducts = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  // Pagination calculations
+  const paginationData = useMemo(() => {
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentProducts = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+    
+    return {
+      indexOfLastItem,
+      indexOfFirstItem,
+      currentProducts,
+      totalPages
+    };
+  }, [filteredProducts, currentPage, itemsPerPage]);
 
   // Get unique categories for filter
-  const categories = ['all', ...new Set(products.map(p => p.category))];
+  const categories = useMemo(() => 
+    ['all', ...new Set(products.map(p => p.category))],
+    [products]
+  );
 
   // Handlers
   const handlePageChange = useCallback((page: number) => {
@@ -232,11 +247,11 @@ const ProductListContainer: React.FC = () => {
 
   return (
     <ProductListPresentational
-      products={currentProducts}
+      products={paginationData.currentProducts}
       loading={loading}
       error={null}
       currentPage={currentPage}
-      totalPages={totalPages}
+      totalPages={paginationData.totalPages}
       onPageChange={handlePageChange}
       selectedCategory={selectedCategory}
       categories={categories}

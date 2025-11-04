@@ -24,13 +24,7 @@ i18n
     debug: true, // set to true to see logs
 
     interpolation: {
-      escapeValue: false, // react already safes from xss
-      format: (value, format, lng) => {
-        if (format === 'uppercase') return value.toUpperCase();
-        if (format === 'lowercase') return value.toLowerCase();
-        if (lng === 'vi' && format === 'currency') return new Intl.NumberFormat('vi-VN').format(value);
-        return value;
-      }
+      escapeValue: false // react already safes from xss
     },
     
     detection: {

@@ -239,4 +239,5 @@ const ProductListPresentational: React.FC<ProductListPresentationalProps> = ({
   );
 };
 
-export default ProductListPresentational;
+const MemoizedProductListPresentational = React.memo(ProductListPresentational);
+export default MemoizedProductListPresentational;

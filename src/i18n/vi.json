@@ -171,7 +171,8 @@
     "newsletter": "Bản tin",
     "newsletter_placeholder": "Nhập email của bạn",
     "subscribe": "Đăng ký",
-    "copyright": "© {{year}} Cửa hàng mỹ phẩm. Bản quyền đã được bảo lưu."
+    "copyright": "© {{year}} Cửa hàng mỹ phẩm. Bản quyền đã được bảo lưu.",
+    "description": "Sản phẩm làm đẹp cao cấp được chế tạo bằng tình yêu và sự chăm sóc cho quy trình chăm sóc da hàng ngày của bạn."
   },
   "cart": {
     "title": "Giỏ hàng",
@@ -304,6 +305,7 @@
     "my_orders": "Đơn hàng của tôi",
     "addresses": "Địa chỉ giao hàng",
     "wishlist": "Danh sách yêu thích",
+    "notifications": "Thông báo",
     "change_password": "Đổi mật khẩu",
     "save_changes": "Lưu thay đổi",
     "edit": "Chỉnh sửa",
@@ -322,5 +324,33 @@
     "greeting": "Xin chào, {{name}}",
     "manage_account": "Quản lý tài khoản của bạn",
     "default_user_name": "Người dùng"
+  },
+  "notifications": {
+    "title": "Thông báo",
+    "promotions": "Khuyến mãi",
+    "product_reviews": "Đánh giá sản phẩm",
+    "orders": "Đơn hàng",
+    "receive_promotions": "Nhận thông báo khuyến mãi",
+    "receive_product_reviews": "Nhận thông báo đánh giá sản phẩm",
+    "email_notifications": "Thông báo qua email",
+    "push_notifications": "Thông báo đẩy",
+    "save_settings": "Lưu cài đặt",
+    "mark_all_read": "Đánh dấu đã đọc tất cả",
+    "no_notifications": "Không có thông báo nào",
+    "view_all": "Xem tất cả",
+    "all_notifications_subtitle": "Bạn có {{count}} thông báo",
+    "total": "Tổng cộng",
+    "unread": "Chưa đọc",
+    "high_priority": "Ưu tiên cao",
+    "medium_priority": "Ưu tiên trung bình",
+    "low_priority": "Ưu tiên thấp",
+    "all_priority": "Tất cả mức độ ưu tiên",
+    "unread_badge": "Chưa đọc",
+    "mark_read": "Đánh dấu đã đọc",
+    "details": "Chi tiết",
+    "search_placeholder": "Tìm kiếm thông báo...",
+    "no_notifications_title": "Không có thông báo nào",
+    "no_notifications_subtitle": "Bạn sẽ thấy các thông báo mới ở đây",
+    "orders": "Đơn hàng"
   }
 }

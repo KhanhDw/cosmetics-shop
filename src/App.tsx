@@ -56,6 +56,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import ErrorFallback from "@/components/ui/ErrorFallback";
 import { router } from "./routes";
+import PerformanceMonitor from "@/components/ui/PerformanceMonitor";
 
 const App: React.FC = () => {
   return (
@@ -64,6 +65,7 @@ const App: React.FC = () => {
         <AppProvider>
           <AuthProvider>
             <RouterProvider router={router} />
+            {process.env.NODE_ENV === 'development' && <PerformanceMonitor />}
             <ToastContainer
               position="top-right"
               autoClose={3000}

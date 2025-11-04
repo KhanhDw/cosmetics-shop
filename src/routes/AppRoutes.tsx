@@ -13,6 +13,7 @@ const Blogs = lazy(() => import("@/pages/Blogs"));
 const BlogDetail = lazy(() => import("@/pages/BlogDetail"));
 const WishlistPage = lazy(() => import("@/pages/WishlistPage"));
 const AccountPage = lazy(() => import("@/pages/AccountPage"));
+const AllNotificationsPage = lazy(() => import("@/pages/AllNotificationsPage"));
 const CartPage = lazy(() => import("@/pages/CartPage"));
 const PaymentPage = lazy(() => import("@/pages/PaymentPage"));
 const OrderConfirmationPage = lazy(() => import("@/pages/OrderConfirmationPage"));
@@ -24,6 +25,9 @@ const PromotionsPage = lazy(() => import("@/pages/PromotionsPage"));
 // Import auth components
 const LoginPage = lazy(() => import("@/components/feature/auth/LoginPage"));
 const RegisterPage = lazy(() => import("@/components/feature/auth/RegisterPage"));
+
+// Import admin components
+const AdminApp = lazy(() => import("@/admin/AdminApp"));
 
 // Import layout components
 import MainLayout from "@/components/layout/MainLayout";
@@ -159,6 +163,16 @@ export const router = createBrowserRouter([
     ),
   },
   {
+    path: "/notifications",
+    element: (
+      <MainLayout>
+        <Suspense fallback={<PageLoader />}>
+          <AllNotificationsPage />
+        </Suspense>
+      </MainLayout>
+    ),
+  },
+  {
     path: "/cart",
     element: (
       <MainLayout>
@@ -239,6 +253,14 @@ export const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/admin/*",
+    element: (
+      <Suspense fallback={<PageLoader />}>
+        <AdminApp />
+      </Suspense>
+    ),
   },
   {
     path: "*",

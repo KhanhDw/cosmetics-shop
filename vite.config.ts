@@ -17,5 +17,21 @@ export default defineConfig({
   build: {
     outDir: "dist",
     sourcemap: false, // Set to false to reduce bundle size for GitHub Pages
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Split vendor libraries into separate chunks
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-i18n': ['i18next', 'react-i18next', 'i18next-browser-languagedetector'],
+          'vendor-icons': ['lucide-react', 'react-icons'],
+          'vendor-utils': ['zustand'], // if using zustand
+          // Split admin-specific code
+          'admin-components': () => 'admin-components',
+          // Split feature-specific code
+          'product-features': () => 'product-features',
+          'auth-features': () => 'auth-features',
+        }
+      }
+    }
   }
 });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface PaginationProps {
@@ -17,7 +17,7 @@ const Pagination: React.FC<PaginationProps> = ({
   showLoadMore = false,
 }) => {
   // Generate page numbers to display
-  const getPageNumbers = () => {
+  const pageNumbers = useMemo(() => {
     const pages = [];
     const maxVisible = 5;
     let start = Math.max(1, currentPage - Math.floor(maxVisible / 2));
@@ -32,7 +32,7 @@ const Pagination: React.FC<PaginationProps> = ({
     }
 
     return pages;
-  };
+  }, [currentPage, totalPages]);
 
   if (showLoadMore && onLoadMore) {
     return (
@@ -47,11 +47,40 @@ const Pagination: React.FC<PaginationProps> = ({
     );
   }
 
+  const handlePrevious = useCallback(() => {
+    onPageChange(currentPage - 1);
+  }, [onPageChange, currentPage]);
+
+  const handleNext = useCallback(() => {
+    onPageChange(currentPage + 1);
+  }, [onPageChange, currentPage]);
+
+  const handlePageClick = useCallback((page: number) => {
+    onPageChange(page);
+  }, [onPageChange]);
+
+  if (showLoadMore && onLoadMore) {
+    const handleLoadMore = useCallback(() => {
+      onLoadMore();
+    }, [onLoadMore]);
+
+    return (
+      <div className="text-center py-8">
+        <button
+          onClick={handleLoadMore}
+          className="px-6 py-3 bg-gradient-to-r from-[color:var(--text-accent)] to-[color:var(--text-secondary)] text-white rounded-full font-medium hover:shadow-lg transition-all duration-300"
+        >
+          Tải Thêm Sản Phẩm
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="flex items-center justify-center space-x-2 py-8">
       {/* Previous Button */}
       <button
-        onClick={() => onPageChange(currentPage - 1)}
+        onClick={handlePrevious}
         disabled={currentPage === 1}
         className="p-2 rounded-lg border border-[color:var(--border)] hover:bg-[color:var(--bg-secondary)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         aria-label="Trang trước"
@@ -60,10 +89,10 @@ const Pagination: React.FC<PaginationProps> = ({
       </button>
 
       {/* Page Numbers */}
-      {getPageNumbers().map((page) => (
+      {pageNumbers.map((page) => (
         <button
           key={page}
-          onClick={() => onPageChange(page)}
+          onClick={() => handlePageClick(page)}
           className={`px-4 py-2 rounded-lg border transition-colors ${
             page === currentPage
               ? "bg-gradient-to-r from-[color:var(--text-accent)] to-[color:var(--text-secondary)] text-white border-transparent"
@@ -76,7 +105,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
       {/* Next Button */}
       <button
-        onClick={() => onPageChange(currentPage + 1)}
+        onClick={handleNext}
         disabled={currentPage === totalPages}
         className="p-2 rounded-lg border border-[color:var(--border)] hover:bg-[color:var(--bg-secondary)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         aria-label="Trang sau"
@@ -87,4 +116,5 @@ const Pagination: React.FC<PaginationProps> = ({
   );
 };
 
-export default Pagination;
+const MemoizedPagination = React.memo(Pagination);
+export default MemoizedPagination;

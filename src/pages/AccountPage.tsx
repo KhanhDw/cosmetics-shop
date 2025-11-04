@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 import { getRandomCosmeticImageUrl } from "@/utils/imageService";
 
 const AccountPage: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [activeSection, setActiveSection] = useState("profile");
+  const location = useLocation();
+  
+  // Initialize activeSection based on location state or default to "profile"
+  const [activeSection, setActiveSection] = useState(() => {
+    return location.state?.activeSection || "profile";
+  });
   const [userData, setUserData] = useState({
     name: "Người dùng",
     email: "user@example.com",
@@ -22,12 +27,22 @@ const AccountPage: React.FC = () => {
     confirm: "",
   });
 
+  // Notification preferences state
+  const [notificationPrefs, setNotificationPrefs] = useState({
+    promotions: true,
+    productReviews: false,
+    emailNotifications: true,
+    pushPromotions: false,
+    pushProductReviews: false,
+  });
+
   // Sidebar menu items with icons - Icons will be SVGs in the component
   const menuItems = [
     { id: "profile", label: t('account.profile') },
     { id: "orders", label: t('account.my_orders') },
     { id: "addresses", label: t('account.addresses') },
     { id: "wishlist", label: t('account.wishlist') },
+    { id: "notifications", label: t('account.notifications') },
     { id: "password", label: t('account.change_password') },
   ];
 
@@ -419,6 +434,123 @@ const AccountPage: React.FC = () => {
     </div>
   );
 
+  // Notification section component
+  const NotificationSection = () => (
+    <div className="space-y-6 animate-fadeIn w-full">
+      <h2 className="text-2xl font-bold text-[var(--text-primary)]">
+        {t('notifications.title')}
+      </h2>
+
+      <div className="p-6 transition-all duration-300 bg-[var(--card-bg)] border border-[var(--border)] rounded-2xl">
+        <h3 className="mb-4 text-xl font-semibold text-[var(--text-primary)]">
+          {t('notifications.promotions')}
+        </h3>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="font-medium text-[var(--text-primary)]">
+                {t('notifications.receive_promotions')}
+              </p>
+              <p className="text-sm text-[var(--text-secondary)]">
+                {t('notifications.email_notifications')}
+              </p>
+            </div>
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                checked={notificationPrefs.promotions}
+                onChange={(e) => setNotificationPrefs({ ...notificationPrefs, promotions: e.target.checked })}
+                className="sr-only peer"
+              />
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[var(--text-accent)]"></div>
+            </label>
+          </div>
+          
+          <div className="flex items-center justify-between ml-6">
+            <div>
+              <p className="font-medium text-[var(--text-primary)]">
+                {t('notifications.push_notifications')}
+              </p>
+            </div>
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                checked={notificationPrefs.pushPromotions}
+                onChange={(e) => setNotificationPrefs({ ...notificationPrefs, pushPromotions: e.target.checked })}
+                className="sr-only peer"
+                disabled={!notificationPrefs.promotions}
+              />
+              <div className={`w-11 h-6 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 ${notificationPrefs.promotions ? 'peer-checked:bg-[var(--text-accent)] bg-gray-200' : 'bg-gray-400'}`}></div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div className="p-6 transition-all duration-300 bg-[var(--card-bg)] border border-[var(--border)] rounded-2xl">
+        <h3 className="mb-4 text-xl font-semibold text-[var(--text-primary)]">
+          {t('notifications.product_reviews')}
+        </h3>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="font-medium text-[var(--text-primary)]">
+                {t('notifications.receive_product_reviews')}
+              </p>
+              <p className="text-sm text-[var(--text-secondary)]">
+                {t('notifications.email_notifications')}
+              </p>
+            </div>
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                checked={notificationPrefs.productReviews}
+                onChange={(e) => setNotificationPrefs({ ...notificationPrefs, productReviews: e.target.checked })}
+                className="sr-only peer"
+              />
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[var(--text-accent)]"></div>
+            </label>
+          </div>
+          
+          <div className="flex items-center justify-between ml-6">
+            <div>
+              <p className="font-medium text-[var(--text-primary)]">
+                {t('notifications.push_notifications')}
+              </p>
+            </div>
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                checked={notificationPrefs.pushProductReviews}
+                onChange={(e) => setNotificationPrefs({ ...notificationPrefs, pushProductReviews: e.target.checked })}
+                className="sr-only peer"
+                disabled={!notificationPrefs.productReviews}
+              />
+              <div className={`w-11 h-6 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 ${notificationPrefs.productReviews ? 'peer-checked:bg-[var(--text-accent)] bg-gray-200' : 'bg-gray-400'}`}></div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex justify-between items-center">
+        <button
+          onClick={() => navigate('/notifications')}
+          className="text-[var(--text-accent)] hover:text-[var(--text-secondary)] px-4 py-2 rounded-full transition-all duration-300"
+        >
+          {t('notifications.view_all')}
+        </button>
+        <button
+          onClick={() => {
+            // Here you would typically send data to backend
+            alert(t('notifications.save_settings') + '!');
+          }}
+          className="bg-gradient-to-r from-[var(--text-accent)] to-[var(--text-secondary)] hover:from-[var(--text-accent)] hover:to-[var(--text-secondary)] text-white px-6 py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+        >
+          {t('notifications.save_settings')}
+        </button>
+      </div>
+    </div>
+  );
+
   return (
     <div className=" max-w-7xl my-10 min-h-screen mx-auto transition-colors duration-300">
       <div className="max-w-full mx-auto">
@@ -448,7 +580,13 @@ const AccountPage: React.FC = () => {
               {menuItems.map((item) => (
                 <li key={item.id}>
                   <button
-                    onClick={() => setActiveSection(item.id)}
+                    onClick={() => {
+                      setActiveSection(item.id);
+                      // Clear location state to avoid issues when navigating within account page
+                      if (location.state?.activeSection) {
+                        navigate(location.pathname, { replace: true });
+                      }
+                    }}
                     className={`w-full text-left px-4 py-3 rounded-2xl transition-all duration-300 flex items-center space-x-3 ${
                       activeSection === item.id
                         ? "bg-gradient-to-r from-[var(--text-accent)] to-[var(--text-secondary)] text-white shadow-md"
@@ -526,6 +664,22 @@ const AccountPage: React.FC = () => {
                           />
                         </svg>
                       )}
+                      {item.id === "notifications" && (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                          />
+                        </svg>
+                      )}
                       {item.id === "password" && (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -579,6 +733,7 @@ const AccountPage: React.FC = () => {
               {activeSection === "orders" && <OrdersSection />}
               {activeSection === "addresses" && <AddressesSection />}
               {activeSection === "wishlist" && <WishlistSection />}
+              {activeSection === "notifications" && <NotificationSection />}
               {activeSection === "password" && <PasswordSection />}
             </div>
           </div>

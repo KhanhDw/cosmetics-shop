@@ -108,17 +108,20 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* Only apply Playfair Display to non-admin sections */
+:not(.admin-interface) h1,
+:not(.admin-interface) h2,
+:not(.admin-interface) h3,
+:not(.admin-interface) h4,
+:not(.admin-interface) h5,
+:not(.admin-interface) h6 {
   font-family: "Playfair Display", serif;
   font-weight: 600;
   line-height: 1.2;
   color: var(--text-primary);
 }
+
+/* Admin headings will use Inter font from admin-styles.css */
 
 h1 {
   font-size: 2.5rem;

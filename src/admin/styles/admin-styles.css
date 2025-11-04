@@ -1,0 +1,73 @@
+/* Admin-specific styles to ensure consistent Inter font usage and theme isolation */
+
+/* Apply Inter font and admin text colors to all admin elements */
+.admin-interface * {
+  font-family: 'Inter', sans-serif !important;
+  color: var(--admin-text-primary) !important;
+}
+
+/* Specifically target admin headings to override any Playfair Display usage */
+.admin-interface h1,
+.admin-interface h2,
+.admin-interface h3,
+.admin-interface h4,
+.admin-interface h5,
+.admin-interface h6 {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600;
+  color: var(--admin-text-primary) !important;
+}
+
+/* Ensure form elements and buttons use Inter font and admin colors */
+.admin-interface input,
+.admin-interface textarea,
+.admin-interface select,
+.admin-interface button,
+.admin-interface label {
+  font-family: 'Inter', sans-serif !important;
+  color: var(--admin-text-primary) !important;
+  background-color: var(--admin-input-bg) !important;
+  border-color: var(--admin-border) !important;
+}
+
+/* Admin-specific card and container styling */
+.admin-interface .admin-card {
+  font-family: 'Inter', sans-serif !important;
+  color: var(--admin-text-primary) !important;
+  background-color: var(--admin-card-bg) !important;
+  border: 1px solid var(--admin-border) !important;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+/* Admin table styling */
+.admin-interface table {
+  font-family: 'Inter', sans-serif !important;
+  color: var(--admin-text-primary) !important;
+}
+
+.admin-interface th,
+.admin-interface td {
+  font-family: 'Inter', sans-serif !important;
+  color: var(--admin-text-primary) !important;
+}
+
+/* Admin-specific typography */
+.admin-interface .admin-title {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--admin-text-primary) !important;
+}
+
+.admin-interface .admin-subtitle {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--admin-text-primary) !important;
+}
+
+.admin-interface .admin-text {
+  font-family: 'Inter', sans-serif !important;
+  color: var(--admin-text-primary) !important;
+}

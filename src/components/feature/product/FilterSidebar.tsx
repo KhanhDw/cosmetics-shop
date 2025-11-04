@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { X, SlidersHorizontal } from "lucide-react";
 
 interface FilterSidebarProps {
@@ -40,7 +40,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
   onApplyFilters,
   allTags,
 }) => {
-  const sidebarContent = (
+  const sidebarContent = useMemo(() => (
     <div className="space-y-6">
       {/* Categories */}
       <div>
@@ -173,7 +173,23 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
         </button>
       </div>
     </div>
-  );
+  ), [
+    categories,
+    brands,
+    selectedCategories,
+    selectedBrands,
+    selectedTags,
+    priceRange,
+    ratingFilter,
+    onCategoryChange,
+    onBrandChange,
+    onTagChange,
+    onPriceChange,
+    onRatingChange,
+    onClearFilters,
+    onApplyFilters,
+    allTags
+  ]);
 
   return (
     <>
@@ -214,4 +230,5 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
   );
 };
 
-export default FilterSidebar;
+const MemoizedFilterSidebar = React.memo(FilterSidebar);
+export default MemoizedFilterSidebar;
