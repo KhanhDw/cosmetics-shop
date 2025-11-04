@@ -6,17 +6,26 @@ import LanguageSelector from "@/components/ui/LanguageSelector";
 import NotificationDropdown from "@/components/ui/NotificationDropdown";
 import { Heart, User, ShoppingCart, Menu } from "lucide-react";
 
+interface Notification {
+  id: number;
+  title: string;
+  message: string;
+  timestamp: string;
+  read: boolean;
+  type: "promotion" | "review" | "order" | "other";
+}
+
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const location = useLocation();
   const { t } = useTranslation();
-  
+
   // Notification state
-  const [notifications, setNotifications] = React.useState([
+  const [notifications, setNotifications] = React.useState<Notification[]>([
     {
       id: 1,
-      title: t('notifications.promotions'),
+      title: t("notifications.promotions"),
       message: "Bạn có ưu đãi đặc biệt trong ngày hôm nay!",
       timestamp: "2023-10-15 10:30",
       read: false,
@@ -24,7 +33,7 @@ const Header: React.FC = () => {
     },
     {
       id: 2,
-      title: t('notifications.product_reviews'),
+      title: t("notifications.product_reviews"),
       message: "Sản phẩm bạn đánh giá đã nhận được phản hồi mới",
       timestamp: "2023-10-14 15:45",
       read: false,
@@ -32,7 +41,7 @@ const Header: React.FC = () => {
     },
     {
       id: 3,
-      title: "Cập nhật đơn hàng",
+      title: t("notifications.order_updates"),
       message: "Đơn hàng #1001 đã được giao thành công",
       timestamp: "2023-10-13 09:20",
       read: true,
@@ -51,16 +60,16 @@ const Header: React.FC = () => {
 
   // Notification handlers
   const markAsRead = (id: number) => {
-    setNotifications(prev => 
-      prev.map(notification => 
+    setNotifications((prev) =>
+      prev.map((notification) =>
         notification.id === id ? { ...notification, read: true } : notification
       )
     );
   };
 
   const markAllAsRead = () => {
-    setNotifications(prev => 
-      prev.map(notification => ({ ...notification, read: true }))
+    setNotifications((prev) =>
+      prev.map((notification) => ({ ...notification, read: true }))
     );
   };
 
@@ -76,16 +85,44 @@ const Header: React.FC = () => {
         <div className="flex items-center space-x-4">
           <Link
             to="/"
-            className="text-2xl font-bold text-accent text-accent!"
+            className="text-2xl font-bold text-accent"
           >
             {t("common.shop_name")}
           </Link>
         </div>
 
+        {/* Desktop Navigation - Full */}
+        <nav className="hidden lg:flex space-x-6">
+          {[
+            { path: "/", labelKey: "navbar.home" },
+            { path: "/products", labelKey: "navbar.products" },
+            { path: "/categories", labelKey: "navbar.categories" },
+            { path: "/promotions", labelKey: "navbar.promotions" },
+            { path: "/blogs", labelKey: "navbar.blogs" },
+            { path: "/about", labelKey: "navbar.about" },
+            { path: "/contact", labelKey: "navbar.contact" },
+          ].map((item) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`font-medium transition-colors duration-200 text-secondary text-sm ${
+                  isActive
+                    ? "text-accent border-b-2 border-accent"
+                    : "hover:text-accent dark:text-secondary dark:hover:text-accent"
+                }`}
+              >
+                {t(item.labelKey)}
+              </Link>
+            );
+          })}
+        </nav>
+
         {/* Navigation and Icons - Responsive */}
-        <div className="flex items-center flex-1 justify-between md:justify-end">
-          {/* Collapsed Navigation Toggle for Medium Screens */}
-          <div className="md:hidden lg:hidden mr-4">
+        <div className="flex items-center justify-between md:justify-end">
+          {/* Collapsed Navigation Toggle for Mobile and Medium Screens */}
+          <div className="lg:hidden mr-4">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-md text-secondary dark:text-secondary"
@@ -94,35 +131,6 @@ const Header: React.FC = () => {
               <Menu className="w-5 h-5" />
             </button>
           </div>
-          
-          {/* Desktop Navigation - Full */}
-          <nav className="hidden lg:flex space-x-6">
-            {[
-              { path: "/", labelKey: "navbar.home" },
-              { path: "/products", labelKey: "navbar.products" },
-              { path: "/categories", labelKey: "navbar.categories" },
-              { path: "/promotions", labelKey: "navbar.promotions" },
-              { path: "/blogs", labelKey: "navbar.blogs" },
-              { path: "/about", labelKey: "navbar.about" },
-              { path: "/contact", labelKey: "navbar.contact" },
-            ].map((item) => {
-              const isActive = location.pathname === item.path;
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`font-medium transition-colors duration-200 text-secondary! text-sm ${
-                    isActive
-                      ? "text-accent border-b-2 border-accent"
-                      : "hover:text-accent dark:text-secondary dark:hover:text-accent"
-                  }`}
-                >
-                  {t(item.labelKey)}
-                </Link>
-              );
-            })}
-          </nav>
-
           <div className="flex items-center space-x-1 ml-0 md:ml-2">
             {/* Desktop Icons */}
             <div className="flex space-x-1">
@@ -165,7 +173,7 @@ const Header: React.FC = () => {
                 <ShoppingCart className="w-5 h-5" />
               </Link>
             </div>
-            
+
             {/* Theme and Language Selectors - More Compact */}
             <div className="hidden md:flex items-center space-x-1">
               <ThemeToggleButton />
@@ -177,8 +185,8 @@ const Header: React.FC = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <nav className="py-4 mt-2 border-t border-[var(--border)] dark:border-[var(--border)] md:hidden">
-          <div className="flex flex-col space-y-3">
+        <nav className="py-4 mt-2 border-t border-[var(--border)] dark:border-[var(--border)] md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-800 shadow-lg z-20">
+          <div className="flex flex-col space-y-3 px-4">
             {[
               { path: "/", labelKey: "navbar.home" },
               { path: "/products", labelKey: "navbar.products" },
@@ -193,7 +201,7 @@ const Header: React.FC = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`py-2 font-medium transition-colors duration-200 text-secondary! ${
+                  className={`py-2 font-medium transition-colors duration-200 text-secondary ${
                     isActive
                       ? "text-accent border-b border-accent"
                       : "text-secondary hover:text-accent dark:text-secondary dark:hover:text-accent"
@@ -211,7 +219,9 @@ const Header: React.FC = () => {
                   onMarkAsRead={markAsRead}
                   onMarkAllAsRead={markAllAsRead}
                 />
-                <span className="text-xs mt-1 truncate max-w-[60px]">{t("notifications.title")}</span>
+                <span className="text-xs mt-1 truncate max-w-[60px]">
+                  {t("notifications.title")}
+                </span>
               </div>
               <Link
                 to="/wishlist"
@@ -222,7 +232,9 @@ const Header: React.FC = () => {
                 } transition-all duration-300`}
               >
                 <Heart className="w-5 h-5" />
-                <span className="text-xs mt-1 truncate max-w-[60px]">{t("common.wishlist")}</span>
+                <span className="text-xs mt-1 truncate max-w-[60px]">
+                  {t("common.wishlist")}
+                </span>
               </Link>
               <Link
                 to="/account"
@@ -233,7 +245,9 @@ const Header: React.FC = () => {
                 } transition-all duration-300`}
               >
                 <User className="w-5 h-5" />
-                <span className="text-xs mt-1 truncate max-w-[60px]">{t("common.account")}</span>
+                <span className="text-xs mt-1 truncate max-w-[60px]">
+                  {t("common.account")}
+                </span>
               </Link>
               <Link
                 to="/cart"
@@ -244,17 +258,19 @@ const Header: React.FC = () => {
                 } transition-all duration-300`}
               >
                 <ShoppingCart className="w-5 h-5" />
-                <span className="text-xs mt-1 truncate max-w-[60px]">{t("common.cart")}</span>
+                <span className="text-xs mt-1 truncate max-w-[60px]">
+                  {t("common.cart")}
+                </span>
               </Link>
             </div>
           </div>
         </nav>
       )}
-      
-      {/* Medium Screen Navigation when open */}
+
+      {/* Medium Screen Navigation */}
       {isMenuOpen && (
         <nav className="py-4 mt-2 border-t border-[var(--border)] dark:border-[var(--border)] hidden md:flex lg:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-800 shadow-lg z-20">
-          <div className="flex flex-col space-y-3 w-full">
+          <div className="flex flex-col space-y-3 px-4 w-full">
             {[
               { path: "/", labelKey: "navbar.home" },
               { path: "/products", labelKey: "navbar.products" },
@@ -269,7 +285,7 @@ const Header: React.FC = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`py-2 font-medium transition-colors duration-200 text-secondary! ${
+                  className={`py-2 font-medium transition-colors duration-200 text-secondary ${
                     isActive
                       ? "text-accent border-b border-accent"
                       : "text-secondary hover:text-accent dark:text-secondary dark:hover:text-accent"
@@ -287,7 +303,9 @@ const Header: React.FC = () => {
                   onMarkAsRead={markAsRead}
                   onMarkAllAsRead={markAllAsRead}
                 />
-                <span className="text-xs mt-1 truncate max-w-[60px]">{t("notifications.title")}</span>
+                <span className="text-xs mt-1 truncate max-w-[60px]">
+                  {t("notifications.title")}
+                </span>
               </div>
               <Link
                 to="/wishlist"
@@ -298,7 +316,9 @@ const Header: React.FC = () => {
                 } transition-all duration-300`}
               >
                 <Heart className="w-5 h-5" />
-                <span className="text-xs mt-1 truncate max-w-[60px]">{t("common.wishlist")}</span>
+                <span className="text-xs mt-1 truncate max-w-[60px]">
+                  {t("common.wishlist")}
+                </span>
               </Link>
               <Link
                 to="/account"
@@ -309,7 +329,9 @@ const Header: React.FC = () => {
                 } transition-all duration-300`}
               >
                 <User className="w-5 h-5" />
-                <span className="text-xs mt-1 truncate max-w-[60px]">{t("common.account")}</span>
+                <span className="text-xs mt-1 truncate max-w-[60px]">
+                  {t("common.account")}
+                </span>
               </Link>
               <Link
                 to="/cart"
@@ -320,12 +342,16 @@ const Header: React.FC = () => {
                 } transition-all duration-300`}
               >
                 <ShoppingCart className="w-5 h-5" />
-                <span className="text-xs mt-1 truncate max-w-[60px]">{t("common.cart")}</span>
+                <span className="text-xs mt-1 truncate max-w-[60px]">
+                  {t("common.cart")}
+                </span>
               </Link>
             </div>
           </div>
         </nav>
       )}
+
+
     </header>
   );
 };

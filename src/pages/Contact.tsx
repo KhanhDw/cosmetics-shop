@@ -60,7 +60,7 @@ const Contact: React.FC = () => {
                 Liên hệ với chúng tôi
               </h2>
               <p className="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
-                Cửa hàng mỹ phẩm BeautyGlow - Nơi sắc đẹp được tôn vinh
+                Cosop BeautyGlow - Nơi sắc đẹp được tôn vinh
               </p>
             </div>
 
@@ -120,7 +120,9 @@ const Contact: React.FC = () => {
                     <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
                       Điện thoại
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300">0901 234 567</p>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      0901 234 567
+                    </p>
                   </div>
                 </div>
 
@@ -145,7 +147,9 @@ const Contact: React.FC = () => {
                     <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
                       Email
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300">support@beautyglow.vn</p>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      support@beautyglow.vn
+                    </p>
                   </div>
                 </div>
 
@@ -416,7 +420,9 @@ const Contact: React.FC = () => {
                     <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
                       TP.HCM
                     </h3>
-                    <p className="mt-1 text-gray-600 dark:text-gray-300">123 Nguyễn Trãi, Q.1</p>
+                    <p className="mt-1 text-gray-600 dark:text-gray-300">
+                      123 Nguyễn Trãi, Q.1
+                    </p>
                     <p className="mt-2 font-medium text-accent dark:text-accent">
                       0901 234 567
                     </p>
@@ -452,7 +458,9 @@ const Contact: React.FC = () => {
                     <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
                       Hà Nội
                     </h3>
-                    <p className="mt-1 text-gray-600 dark:text-gray-300">45 Láng Hạ, Đống Đa</p>
+                    <p className="mt-1 text-gray-600 dark:text-gray-300">
+                      45 Láng Hạ, Đống Đa
+                    </p>
                     <p className="mt-2 font-medium text-accent dark:text-accent">
                       0902 345 678
                     </p>

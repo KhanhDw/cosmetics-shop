@@ -152,7 +152,9 @@ const ProductDetailPage: React.FC = () => {
                 </Link>
               </li>
               <li className="text-[color:var(--text-secondary)]">/</li>
-              <li className="text-[color:var(--text-secondary)]">Kem dưỡng trắng da ban đêm</li>
+              <li className="text-[color:var(--text-secondary)]">
+                Kem dưỡng trắng da ban đêm
+              </li>
             </ol>
           </nav>
         </div>
@@ -175,7 +177,10 @@ const ProductDetailPage: React.FC = () => {
             </div>
 
             {/* Thumbnails */}
-            <div className="flex space-x-3 mt-4 overflow-x-auto pb-2" aria-label="Image thumbnails">
+            <div
+              className="flex space-x-3 mt-4 overflow-x-auto pb-2"
+              aria-label="Image thumbnails"
+            >
               {product.images?.map((img, index) => (
                 <button
                   key={index}
@@ -223,7 +228,11 @@ const ProductDetailPage: React.FC = () => {
               </div>
 
               <div className="flex items-center mb-8">
-                <div className="flex" role="rating" aria-label={`Rating: ${product.rating} out of 5 stars`}>
+                <div
+                  className="flex"
+                  role="rating"
+                  aria-label={`Rating: ${product.rating} out of 5 stars`}
+                >
                   {[...Array(5)].map((_, i) => (
                     <span
                       key={i}
@@ -239,7 +248,8 @@ const ProductDetailPage: React.FC = () => {
                   ))}
                 </div>
                 <span className="ml-3 text-[color:var(--text-secondary)] text-lg">
-                  <span className="sr-only">Rated </span>({product.reviewCount} đánh giá)
+                  <span className="sr-only">Rated </span>({product.reviewCount}{" "}
+                  đánh giá)
                 </span>
               </div>
 
@@ -303,9 +313,7 @@ const ProductDetailPage: React.FC = () => {
                 <div className="flex items-center">
                   <span className="mr-3 text-lg">🛡️</span> {product.guarantee}
                 </div>
-                <div className="flex items-center">
-                  <span className="mr-3 text-lg">💖</span> {product.exchange}
-                </div>
+                <div className="flex items-center">{product.exchange}</div>
               </div>
             </div>
           </div>
@@ -341,8 +349,13 @@ const ProductDetailPage: React.FC = () => {
                 </p>
                 <p className="text-[color:var(--text-secondary)] text-lg leading-relaxed">
                   Với công nghệ Micro-Luminance độc quyền, sản phẩm giúp làn da
-                  trở nên <em className="text-[color:var(--text-accent)]">mịn như lụa</em>,{" "}
-                  <em className="text-[color:var(--text-accent)]">tươi mới</em> mỗi sáng thức dậy.
+                  trở nên{" "}
+                  <em className="text-[color:var(--text-accent)]">
+                    mịn như lụa
+                  </em>
+                  ,{" "}
+                  <em className="text-[color:var(--text-accent)]">tươi mới</em>{" "}
+                  mỗi sáng thức dậy.
                 </p>
               </div>
             )}
@@ -534,9 +547,14 @@ const ProductDetailPage: React.FC = () => {
             </h3>
             <p className="text-[color:var(--text-secondary)] mb-6 text-lg">
               Trải nghiệm làn da{" "}
-              <span className="text-[color:var(--text-accent)] font-medium">mịn màng</span>,{" "}
-              <span className="text-[color:var(--text-accent)] font-medium">rạng rỡ</span> chỉ có
-              trong combo chăm sóc da cao cấp
+              <span className="text-[color:var(--text-accent)] font-medium">
+                mịn màng
+              </span>
+              ,{" "}
+              <span className="text-[color:var(--text-accent)] font-medium">
+                rạng rỡ
+              </span>{" "}
+              chỉ có trong combo chăm sóc da cao cấp
             </p>
             <button className="bg-gradient-to-r from-[color:var(--text-accent)] to-[color:var(--text-secondary)] text-white py-4 px-10 rounded-xl font-semibold hover:from-[color:var(--text-secondary)] hover:to-[color:var(--text-accent)] transition-all duration-300 shadow-lg hover:shadow-xl">
               Khám phá ngay
@@ -547,7 +565,9 @@ const ProductDetailPage: React.FC = () => {
         {/* Q&A Section (Optional) */}
         <div className="bg-[color:var(--card-bg)] rounded-xl shadow-sm mb-16 overflow-hidden fade-in-element opacity-0 transition-opacity duration-500 delay-500">
           <div className="p-8 border-b border-[color:var(--border)]">
-            <h2 className="text-2xl font-bold text-[color:var(--text-primary)]">Hỏi đáp nhanh</h2>
+            <h2 className="text-2xl font-bold text-[color:var(--text-primary)]">
+              Hỏi đáp nhanh
+            </h2>
           </div>
           <div className="p-8">
             <div className="mb-8 pb-8 border-b border-[color:var(--border)]">
@@ -615,7 +635,9 @@ const ProductDetailPage: React.FC = () => {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-[color:var(--text-primary)] text-lg mb-5">Đổi trả</h3>
+              <h3 className="font-bold text-[color:var(--text-primary)] text-lg mb-5">
+                Đổi trả
+              </h3>
               <ul className="space-y-3 text-[color:var(--text-secondary)]">
                 <li className="flex items-start">
                   <span className="mr-2 mt-1">🔄</span>
@@ -632,7 +654,9 @@ const ProductDetailPage: React.FC = () => {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-[color:var(--text-primary)] text-lg mb-5">Bảo hành</h3>
+              <h3 className="font-bold text-[color:var(--text-primary)] text-lg mb-5">
+                Bảo hành
+              </h3>
               <ul className="space-y-3 text-[color:var(--text-secondary)]">
                 <li className="flex items-start">
                   <span className="mr-2 mt-1">🛡️</span>
@@ -649,7 +673,9 @@ const ProductDetailPage: React.FC = () => {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-[color:var(--text-primary)] text-lg mb-5">Liên hệ</h3>
+              <h3 className="font-bold text-[color:var(--text-primary)] text-lg mb-5">
+                Liên hệ
+              </h3>
               <ul className="space-y-3 text-[color:var(--text-secondary)]">
                 <li className="flex items-start">
                   <span className="mr-2 mt-1">📞</span>

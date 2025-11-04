@@ -1,54 +1,15 @@
-import React, { createContext, useContext, useReducer, ReactNode } from 'react';
-import { AuthState, authReducer, initialAuthState } from './authReducer';
-import { CartState, cartReducer, initialCartState } from './cartReducer';
-import { ProductState, productReducer, initialProductState } from './productReducer';
+import React, { createContext, useContext, ReactNode } from 'react';
 
-// Define the combined state type
+// This context is being deprecated in favor of the new clean architecture
+// Using the new architecture with services and hooks instead
+// See presentation layer hooks for new patterns
+
 interface AppState {
-  auth: AuthState;
-  cart: CartState;
-  products: ProductState;
+  // Placeholder interface - this context will be phased out
 }
 
-// Define the combined actions type
-type AppAction = 
-  | { type: 'SET_AUTH_STATE'; payload: Partial<AuthState> }
-  | { type: 'SET_CART_STATE'; payload: Partial<CartState> }
-  | { type: 'SET_PRODUCT_STATE'; payload: Partial<ProductState> };
-
-// Define the initial state
-const initialState: AppState = {
-  auth: initialAuthState,
-  cart: initialCartState,
-  products: initialProductState,
-};
-
 // Create the context
-const AppStateContext = createContext<{
-  state: AppState;
-  dispatch: React.Dispatch<AppAction>;
-} | undefined>(undefined);
-
-// Combined reducer
-const appReducer = (state: AppState, action: AppAction): AppState => {
-  return {
-    auth: authReducer(state.auth, {
-      type: action.type,
-      payload: action.payload,
-      ...(action.type.startsWith('AUTH_') && { type: action.type, payload: action.payload })
-    } as any),
-    cart: cartReducer(state.cart, {
-      type: action.type,
-      payload: action.payload,
-      ...(action.type.startsWith('CART_') && { type: action.type, payload: action.payload })
-    } as any),
-    products: productReducer(state.products, {
-      type: action.type,
-      payload: action.payload,
-      ...(action.type.startsWith('PRODUCT_') && { type: action.type, payload: action.payload })
-    } as any),
-  };
-};
+const AppStateContext = createContext<AppState | undefined>(undefined);
 
 // Provider component
 interface AppProviderProps {
@@ -56,10 +17,12 @@ interface AppProviderProps {
 }
 
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
-  const [state, dispatch] = useReducer(appReducer, initialState);
+  // In the new architecture, state management is done through services and hooks
+  // rather than a global context
+  const state: AppState = {};
 
   return (
-    <AppStateContext.Provider value={{ state, dispatch }}>
+    <AppStateContext.Provider value={state}>
       {children}
     </AppStateContext.Provider>
   );
@@ -74,9 +37,10 @@ export const useAppState = () => {
   return context;
 };
 
-// NOTE: Zustand stores are now available as optimized alternatives to this context:
-// - useProductStore() for product-related state
-// - useCartStore() for cart-related state  
-// - useAuthStore() for authentication state
+// NOTE: The new clean architecture uses services in the application layer
+// and hooks in the presentation layer for state management
+// - ProductService and useProductService() for product-related operations
+// - CartService and useCartService() for cart-related operations
+// - Use specific services for other business logic
 // 
-// New components should consider using Zustand stores for better performance and easier state management
+// This AppContext is kept for backward compatibility but will be phased out

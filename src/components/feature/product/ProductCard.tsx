@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import { Product } from "@/types";
 
 interface ProductCardProps {
@@ -19,7 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   }
 
   const { t } = useTranslation();
-  
+
   const {
     name,
     brand = "Brand",
@@ -171,7 +171,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </div>
 
           <div className="flex items-center justify-between">
-            <div className="flex flex-col">
+            <div className="flex items-center space-x-2">
               <span className="text-xl font-bold text-[var(--text-accent)] !text-[var(--text-accent)]">
                 {formattedPrice}
               </span>
@@ -187,7 +187,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             onClick={handleAddToCart}
             className="w-full mt-4 py-3 bg-[var(--bg-secondary)] dark:bg-gray-800 text-[var(--text-primary)] rounded-lg font-semibold hover:bg-[var(--text-accent)] hover:text-white transition-all duration-300 border border-[var(--border)] dark:border-[var(--border)] hover:border-transparent"
           >
-            {t('common.add_to_cart')}
+            {t("common.add_to_cart")}
           </button>
         </div>
       </div>

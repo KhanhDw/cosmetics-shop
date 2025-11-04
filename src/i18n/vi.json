@@ -38,7 +38,7 @@
     "not_found_title": "Không tìm thấy trang",
     "not_found_subtitle": "Xin lỗi, chúng tôi không tìm thấy trang bạn đang tìm.",
     "back_to_home": "Trở về trang chủ",
-    "shop_name": "Cửa hàng mỹ phẩm",
+    "shop_name": "Cosop",
     "all_rights_reserved": "Bản quyền đã được bảo lưu",
     "follow_us": "Theo dõi chúng tôi",
     "customer_service": "Dịch vụ khách hàng",
@@ -171,7 +171,7 @@
     "newsletter": "Bản tin",
     "newsletter_placeholder": "Nhập email của bạn",
     "subscribe": "Đăng ký",
-    "copyright": "© {{year}} Cửa hàng mỹ phẩm. Bản quyền đã được bảo lưu.",
+    "copyright": "© {{year}} Cosop. Bản quyền đã được bảo lưu.",
     "description": "Sản phẩm làm đẹp cao cấp được chế tạo bằng tình yêu và sự chăm sóc cho quy trình chăm sóc da hàng ngày của bạn."
   },
   "cart": {

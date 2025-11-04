@@ -38,7 +38,7 @@
     "not_found_title": "Page Not Found",
     "not_found_subtitle": "Sorry, we couldn't find the page you're looking for.",
     "back_to_home": "Back to Home",
-    "shop_name": "Cosmetics Shop",
+    "shop_name": "Cosop",
     "all_rights_reserved": "All rights reserved",
     "follow_us": "Follow Us",
     "customer_service": "Customer Service",
@@ -171,7 +171,7 @@
     "newsletter": "Newsletter",
     "newsletter_placeholder": "Enter your email",
     "subscribe": "Subscribe",
-    "copyright": "© {{year}} Cosmetics Shop. All rights reserved.",
+    "copyright": "© {{year}} Cosop. All rights reserved.",
     "description": "Premium beauty products crafted with love and care for your daily skincare routine."
   },
   "cart": {

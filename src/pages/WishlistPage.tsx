@@ -238,7 +238,7 @@ const WishlistPage: React.FC = () => {
           </nav>
           <div className="flex flex-col gap-4 mt-4 md:flex-row md:items-center md:justify-between">
             <h1 className="text-3xl font-bold text-[var(--text-primary)] animate-fadeIn">
-              Danh sách yêu thích 💖
+              Danh sách yêu thích
             </h1>
             {wishlist.length > 0 && (
               <span className="text-lg text-[var(--text-secondary)]">
@@ -391,11 +391,11 @@ const WishlistPage: React.FC = () => {
                   </div>
 
                   <div className="p-4">
-                    <h3 
-                      className="mb-1 font-medium text-[var(--text-primary)] line-clamp-2 max-h-[3.5rem] overflow-hidden"
+                    <h3
+                      className="mb-3 font-medium text-[var(--text-primary)]  max-h-20"
                       title={product.name}
                     >
-                      <span className="inline-block max-w-full break-words">
+                      <span className="max-w-full break-words line-clamp-2 overflow-hidden ">
                         {product.name}
                       </span>
                     </h3>
