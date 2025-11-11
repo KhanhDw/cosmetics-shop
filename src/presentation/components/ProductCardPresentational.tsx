@@ -26,16 +26,16 @@ const ProductCardPresentational: React.FC<ProductCardPresentationalProps> = ({
   };
 
   return (
-    <div className={`bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ${className}`}>
+    <div className={`bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${className} group`}>
       <div className="relative">
         <img 
           src={product.image} 
           alt={product.name} 
-          className="w-full h-48 object-cover cursor-pointer"
+          className="w-full h-48 object-cover cursor-pointer group-hover:scale-105 transition-transform duration-500"
           onClick={handleShowDetails}
         />
         {productEntity.isOnSale() && (
-          <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+          <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded transform transition-all duration-300 group-hover:scale-110">
             {productEntity.getDiscountPercentage()}% OFF
           </span>
         )}
@@ -43,7 +43,7 @@ const ProductCardPresentational: React.FC<ProductCardPresentationalProps> = ({
       
       <div className="p-4">
         <h3 
-          className="text-lg font-semibold text-gray-800 mb-1 cursor-pointer hover:text-pink-600"
+          className="text-lg font-semibold text-gray-800 mb-1 cursor-pointer hover:text-pink-600 transition-colors duration-200"
           onClick={handleShowDetails}
         >
           {product.name}
@@ -65,15 +65,15 @@ const ProductCardPresentational: React.FC<ProductCardPresentationalProps> = ({
           <div>
             {productEntity.isOnSale() ? (
               <>
-                <span className="text-lg font-bold text-pink-600">
+                <span className="text-lg font-bold text-pink-600 transition-transform duration-200 hover:scale-105">
                   {product.price.toLocaleString()}₫
                 </span>
-                <span className="ml-2 text-sm text-gray-500 line-through">
+                <span className="ml-2 text-sm text-gray-500 line-through transition-transform duration-200 hover:scale-105">
                   {product.originalPrice?.toLocaleString()}₫
                 </span>
               </>
             ) : (
-              <span className="text-lg font-bold text-pink-600">
+              <span className="text-lg font-bold text-pink-600 transition-transform duration-200 hover:scale-105">
                 {product.price.toLocaleString()}₫
               </span>
             )}
@@ -81,7 +81,7 @@ const ProductCardPresentational: React.FC<ProductCardPresentationalProps> = ({
           
           <button
             onClick={handleAddToCart}
-            className="bg-pink-500 hover:bg-pink-600 text-white px-3 py-1 rounded-md text-sm transition-colors"
+            className="bg-pink-500 hover:bg-pink-600 text-white px-3 py-1 rounded-md text-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 transform"
           >
             Add to Cart
           </button>

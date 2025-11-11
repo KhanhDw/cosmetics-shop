@@ -81,7 +81,7 @@ const CartPage: React.FC = () => {
     const savedTheme = localStorage.getItem("theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const isDarkMode = savedTheme ? savedTheme === "dark" : prefersDark;
-    
+
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
@@ -234,7 +234,7 @@ const CartPage: React.FC = () => {
 
   return (
     <div className="min-h-screen p-4 bg-gradient-to-br from-cosmetic-pink-50 to-cosmetic-purple-50 dark:from-gray-900 dark:to-gray-800 md:p-8">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-7xl animate-fade-in-up">
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between">
@@ -425,7 +425,7 @@ const CartPage: React.FC = () => {
                               onClick={() =>
                                 handleQuantityChange(item.id, item.quantity - 1)
                               }
-                              className="flex items-center justify-center w-8 h-8 text-gray-600 transition-colors bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+                              className="flex items-center justify-center w-10 h-10 text-gray-600 transition-colors bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 touch-target"
                               disabled={item.quantity <= 1}
                             >
                               -
@@ -437,7 +437,7 @@ const CartPage: React.FC = () => {
                               onClick={() =>
                                 handleQuantityChange(item.id, item.quantity + 1)
                               }
-                              className="flex items-center justify-center w-8 h-8 text-gray-600 transition-colors bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+                              className="flex items-center justify-center w-10 h-10 text-gray-600 transition-colors bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 touch-target"
                             >
                               +
                             </button>
@@ -453,7 +453,7 @@ const CartPage: React.FC = () => {
                       </div>
                       <button
                         onClick={() => handleDeleteItem(item.id)}
-                        className="p-2 ml-4 text-gray-500 transition-colors hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
+                        className="p-3 ml-4 text-gray-500 transition-colors hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400 touch-target"
                       >
                         <svg
                           className="w-5 h-5"
@@ -657,7 +657,7 @@ const CartPage: React.FC = () => {
 
               <Link
                 to="/checkout"
-                className="block w-full px-4 py-3 mt-6 font-medium text-center text-white! transition-all duration-300 rounded-full shadow-md bg-linear-to-r from-[var(--cosmetic-pink-500)] to-[var(--cosmetic-purple-500)] hover:from-cosmetic-pink-600 hover:to-cosmetic-purple-600 hover:shadow-lg "
+                className="block w-full px-4 py-3 mt-6 font-medium text-center text-white transition-all duration-300 rounded-full shadow-md bg-gradient-to-r from-cosmetic-pink-500 to-cosmetic-purple-500 hover:from-cosmetic-pink-600 hover:to-cosmetic-purple-600 hover:shadow-lg"
               >
                 {t('cart.proceed_to_checkout')}
               </Link>

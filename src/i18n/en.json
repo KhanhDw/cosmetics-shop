@@ -152,7 +152,10 @@
     "24_7_support": "24/7 Support",
     "easy_returns": "Easy Returns",
     "quality_guaranteed": "Quality Guaranteed",
-    "try_again": "Try Again"
+    "try_again": "Try Again",
+    "error_occurred": "Oops, something went wrong!",
+    "unexpected_error": "An unexpected error occurred",
+    "contact_support_if_persistent": "If the problem persists, please contact our support team."
   },
   "navbar": {
     "home": "Home",
@@ -194,7 +197,14 @@
     "description": "Description",
     "reviews": "Reviews",
     "specifications": "Specifications",
-    "similar_products": "Similar Products"
+    "similar_products": "Similar Products",
+    "combo_banner_title": "🌸 Comprehensive skincare set – 15% discount when buying combo",
+    "combo_banner_description": "Experience smooth, radiant skin only in premium skincare combo",
+    "usage": "Usage Instructions",
+    "storage": "Storage & Expiry",
+    "smooth_as_silk": "smooth as silk",
+    "fresh_every_morning": "fresh",
+    "every_morning_awakening": "every morning awakening"
   },
   "auth": {
     "login": "Login",
@@ -292,7 +302,89 @@
     "free_shipping": "Free",
     "proceed_to_checkout": "Proceed to checkout",
     "free_shipping_note": "🎉 Free shipping for orders from 500,000₫",
-    "shipping_threshold_note": "📦 Add {{amount}}₫ more to get free shipping"
+    "shipping_threshold_note": "📦 Add {{amount}}₫ more to get free shipping",
+    "deselect_all": "Deselect all",
+    "showing": "Showing",
+    "of": "of",
+    "products": "products"
+  },
+  "cart": {
+    "no_results_for_query": "No products match your search for \"{{query}}\"",
+    "try_different_query": "Please try different keywords."
+  },
+  "wishlist": {
+    "empty_title": "You don't have any favorite products yet 💔",
+    "empty_subtitle": "Your wishlist is empty. Explore our wonderful products!"
+  },
+  "homepage": {
+    "about": {
+      "title": "Why Choose Us",
+      "subtitle": "Committed to bringing you the best beauty shopping experience",
+      "features": {
+        "genuine": "100% Authentic",
+        "genuine_desc": "Imported directly from manufacturers, ensuring quality",
+        "delivery": "Fast Delivery",
+        "delivery_desc": "Nationwide delivery within 24-48 hours",
+        "advisory": "Expert Advisory",
+        "advisory_desc": "Experienced beauty expert team",
+        "return": "Easy Returns",
+        "return_desc": "Commitment to return if you're not satisfied with the product"
+      }
+    },
+    "newsletter": {
+      "title": "Get 15% Off Your First Order",
+      "description": "Subscribe to our newsletter and be the first to know about new products, exclusive offers, and beauty tips",
+      "email_placeholder": "Enter your email address",
+      "subscribe_button": "Subscribe",
+      "terms": "No spam, unsubscribe at any time. By subscribing, you agree to our Privacy Policy.",
+      "success_message": "Thank you for subscribing to our newsletter!"
+    },
+    "testimonials": {
+      "title": "Customer Reviews",
+      "subtitle": "Genuine feedback from customers who have experienced our products",
+      "customer1": {
+        "name": "Lan Anh",
+        "age": "26 years old",
+        "comment": "I really like the moisturizer here, excellent quality and packaging is extremely exquisite!"
+      },
+      "customer2": {
+        "name": "Minh Tuấn",
+        "age": "32 years old",
+        "comment": "Fast delivery service, enthusiastic consultation. Will support the shop long-term!"
+      },
+      "customer3": {
+        "name": "Hạnh Linh",
+        "age": "29 years old",
+        "comment": "The shop's matte lipstick has very beautiful color, long-lasting and doesn't dry the lips. I love it!"
+      },
+      "customer4": {
+        "name": "Quang Vinh",
+        "age": "35 years old",
+        "comment": "Authentic products, reasonable prices. Website is easy to use and secure payment."
+      },
+      "customer5": {
+        "name": "Thùy Dương",
+        "age": "24 years old",
+        "comment": "Discovered many new brands thanks to the shop. Consultation is very professional!"
+      }
+    },
+    "special_offers": {
+      "title": "Special Offers & Promotions",
+      "subtitle": "Don't miss out on the attractive offers waiting for you",
+      "special_deal": "Special Deal",
+      "offer1": {
+        "title": "Up to 30% Off",
+        "subtitle": "Fall Skincare Set 🍁",
+        "description": "Special discounts for fall skincare products",
+        "button_text": "Get Offer Now"
+      },
+      "offer2": {
+        "title": "Free Lipstick",
+        "subtitle": "For Orders Over 1,000,000đ",
+        "description": "Free premium matte lipstick for all orders over 1 million",
+        "button_text": "Shop Now to Get Free Gift"
+      }
+    }
   },
   "products": {
     "title": "Our Products",
@@ -351,6 +443,132 @@
     "search_placeholder": "Search notifications...",
     "no_notifications_title": "No notifications",
     "no_notifications_subtitle": "You'll see new notifications here",
-    "orders": "Orders"
+    "orders": "Orders",
+    "order_status_update": "Order #{{orderNumber}} has been delivered successfully"
+  },
+  "about": {
+    "hero": {
+      "title": "Celebrating your natural beauty.",
+      "description": "We believe that real beauty comes from confidence and self-love. Each of our products is created to help you discover and express your inner beauty.",
+      "explore_products": "Explore products",
+      "our_story": "Our story"
+    },
+    "brand_story": {
+      "title": "Our Story",
+      "founded": "Founded Year",
+      "founded_desc": "Starting from 2015, we have developed a premium cosmetics brand with the spirit of taking quality and safety as the foundation.",
+      "vision_mission": "Vision & Mission",
+      "mission_desc": "Our mission is to bring women natural, safe and effective beauty products that help them confidently express their unique beauty.",
+      "founding_story": "Founding Story",
+      "founding_desc": "We started with the desire to help women be more confident every day, discovering their true beauty through high-quality products created with love and sophistication."
+    },
+    "core_values": {
+      "title": "Core Values",
+      "description": "The foundational principles that guide all our operations"
+    },
+    "values": {
+      "natural": {
+        "title": "Natural & Safe",
+        "description": "We commit to using natural ingredients that are safe for your skin, containing no harmful chemicals."
+      },
+      "celebrate_women": {
+        "title": "Celebrating Women",
+        "description": "Every product is created to help women feel confident and radiant in their own way."
+      },
+      "sustainability": {
+        "title": "Sustainable Development",
+        "description": "We aim for environmentally friendly and ethical solutions in production."
+      },
+      "quality": {
+        "title": "International Quality",
+        "description": "Meeting international standards with strict verification processes and high quality control."
+      }
+    },
+    "quality": {
+      "title": "Process & Quality Commitment",
+      "description": "Each product undergoes strict verification processes to ensure the highest quality",
+      "steps": {
+        "1": {
+          "title": "Selecting Materials",
+          "description": "Only use natural ingredients with clear origin"
+        },
+        "2": {
+          "title": "Quality Verification",
+          "description": "Safety and efficacy testing on skin"
+        },
+        "3": {
+          "title": "Careful Packaging",
+          "description": "Environmentally friendly packaging, good preservation"
+        },
+        "4": {
+          "title": "Safe Distribution",
+          "description": "Transportation ensures product quality"
+        }
+      }
+    },
+    "achievements": {
+      "title": "Achievements & Partners",
+      "description": "The results and recognition we have achieved",
+      "experience_years": "10+",
+      "experience_desc": "Years of experience",
+      "satisfied_customers": "50K+",
+      "satisfied_desc": "Satisfied customers",
+      "distribution_countries": "20",
+      "distribution_desc": "Distributed countries"
+    },
+    "team": {
+      "title": "Expert Team",
+      "description": "Top experts in the cosmetics industry working with us",
+      "member1": {
+        "name": "Nguyen Thi Huong",
+        "position": "Dermatology Expert",
+        "description": "10 years of experience in the cosmetics industry"
+      },
+      "member2": {
+        "name": "Tran My Linh",
+        "position": "Research Department Head",
+        "description": "Cosmetic chemistry expert, formerly worked in France"
+      },
+      "member3": {
+        "name": "Pham Thu Trang",
+        "position": "Creative Director",
+        "description": "Senior cosmetic technology engineer"
+      },
+      "member4": {
+        "name": "Le Minh Anh",
+        "position": "Product Director",
+        "description": "Natural product development expert"
+      }
+    },
+    "testimonials": {
+      "title": "Customers & Community",
+      "description": "Honest reviews from customers who have experienced our products",
+      "customer1": {
+        "name": "Lan Anh",
+        "age": "26 years old",
+        "comment": "I really like the moisturizer here, excellent quality and packaging is extremely exquisite!"
+      },
+      "customer2": {
+        "name": "Minh Tuan",
+        "age": "32 years old",
+        "comment": "Fast delivery service, enthusiastic consultation. Will support the shop long-term!"
+      },
+      "customer3": {
+        "name": "Hanh Linh",
+        "age": "29 years old",
+        "comment": "The shop's matte lipstick has very beautiful color, long-lasting and doesn't dry the lips. I love it!"
+      }
+    },
+    "philosophy": {
+      "quote": "True beauty comes from confidence and self-love."
+    },
+    "contact": {
+      "title": "Experience natural beauty with us.",
+      "description": "Be the first to know about new products and special offers",
+      "explore_products": "Explore products",
+      "subscribe_promotions": "Subscribe to receive promotions",
+      "email_placeholder": "Enter your email...",
+      "follow_us": "Follow us on social media"
+    }
   }
 }

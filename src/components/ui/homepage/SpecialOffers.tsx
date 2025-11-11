@@ -1,19 +1,21 @@
 import React from "react";
 import { Gift, Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const SpecialOffers: React.FC = () => {
+  const { t } = useTranslation();
   const offers = [
     {
-      title: "Giảm Đến 30%",
-      subtitle: "Cho Bộ Dưỡng Da Mùa Thu 🍁",
-      description: "Ưu đãi đặc biệt cho các sản phẩm dưỡng da mùa thu",
-      buttonText: "Nhận Ưu Đãi Ngay",
+      title: t("homepage.special_offers.offer1.title"),
+      subtitle: t("homepage.special_offers.offer1.subtitle"),
+      description: t("homepage.special_offers.offer1.description"),
+      buttonText: t("homepage.special_offers.offer1.button_text"),
     },
     {
-      title: "Tặng Son",
-      subtitle: "Khi Mua Đơn Hàng Trên 1.000.000đ",
-      description: "Quà tặng son lì cao cấp cho mọi đơn hàng từ 1 triệu",
-      buttonText: "Mua Ngay Để Được Tặng Quà",
+      title: t("homepage.special_offers.offer2.title"),
+      subtitle: t("homepage.special_offers.offer2.subtitle"),
+      description: t("homepage.special_offers.offer2.description"),
+      buttonText: t("homepage.special_offers.offer2.button_text"),
     },
   ];
 
@@ -22,10 +24,10 @@ const SpecialOffers: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[color:var(--text-primary)] !text-[color:var(--text-primary)] mb-4">
-            Ưu Đãi & Khuyến Mãi
+            {t("homepage.special_offers.title")}
           </h2>
           <p className="text-lg text-[color:var(--text-secondary)] !text-[color:var(--text-secondary)] max-w-2xl mx-auto">
-            Đừng bỏ lỡ những ưu đãi hấp dẫn đang chờ đón bạn
+            {t("homepage.special_offers.subtitle")}
           </p>
         </div>
 
@@ -39,7 +41,7 @@ const SpecialOffers: React.FC = () => {
                 <div className="flex items-center space-x-2 mb-4">
                   <Gift className="w-6 h-6" />
                   <span className="text-sm font-medium uppercase tracking-wide">
-                    Ưu Đãi Đặc Biệt
+                    {t("homepage.special_offers.special_deal")}
                   </span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold mb-2">

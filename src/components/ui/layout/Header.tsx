@@ -41,8 +41,8 @@ const Header: React.FC = () => {
     },
     {
       id: 3,
-      title: t("notifications.order_updates"),
-      message: "Đơn hàng #1001 đã được giao thành công",
+      title: t("notifications.orders"),
+      message: t("notifications.order_status_update", { orderNumber: 1001 }),
       timestamp: "2023-10-13 09:20",
       read: true,
       type: "order",
@@ -78,14 +78,14 @@ const Header: React.FC = () => {
       className={`px-4 py-3 transition-colors duration-300 ${
         scrolled
           ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-md"
-          : "bg-secondary dark:bg-secondary"
+          : "bg-white dark:bg-gray-900"
       } sticky top-0 z-50`}
     >
       <div className="container flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <Link
             to="/"
-            className="text-2xl font-bold text-accent"
+            className="text-2xl font-bold bg-gradient-to-r from-cosmetic-pink-500 to-cosmetic-purple-500 bg-clip-text text-transparent"
           >
             {t("common.shop_name")}
           </Link>
@@ -107,10 +107,10 @@ const Header: React.FC = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`font-medium transition-colors duration-200 text-secondary text-sm ${
+                className={`font-medium transition-colors duration-200 text-gray-600 dark:text-gray-300 text-sm ${
                   isActive
-                    ? "text-accent border-b-2 border-accent"
-                    : "hover:text-accent dark:text-secondary dark:hover:text-accent"
+                    ? "text-cosmetic-pink-500 border-b-2 border-cosmetic-pink-500"
+                    : "hover:text-cosmetic-pink-500 dark:hover:text-cosmetic-pink-400"
                 }`}
               >
                 {t(item.labelKey)}
@@ -120,12 +120,12 @@ const Header: React.FC = () => {
         </nav>
 
         {/* Navigation and Icons - Responsive */}
-        <div className="flex items-center justify-between md:justify-end">
+        <div className="flex items-center justify-between md:justify-end ">
           {/* Collapsed Navigation Toggle for Mobile and Medium Screens */}
           <div className="lg:hidden mr-4">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md text-secondary dark:text-secondary"
+              className="p-3 rounded-md text-gray-600 dark:text-gray-300 hover:text-cosmetic-pink-500 dark:hover:text-cosmetic-pink-400 touch-target"
               aria-label="Toggle navigation"
             >
               <Menu className="w-5 h-5" />
@@ -141,36 +141,39 @@ const Header: React.FC = () => {
               />
               <Link
                 to="/wishlist"
-                className={`p-1.5 rounded-full ${
+                className={`p-3 rounded-full ${
                   location.pathname === "/wishlist"
-                    ? "bg-[var(--text-accent)]/10 text-accent"
-                    : "text-secondary hover:text-accent hover:bg-[var(--bg-secondary)]/50 dark:text-secondary dark:hover:text-accent"
-                } transition-all duration-300`}
+                    ? "bg-cosmetic-pink-100 text-cosmetic-pink-500 dark:bg-cosmetic-pink-900/30 dark:text-cosmetic-pink-400"
+                    : "text-gray-600 hover:text-cosmetic-pink-500 hover:bg-cosmetic-pink-50 dark:text-gray-300 dark:hover:text-cosmetic-pink-400 dark:hover:bg-gray-800"
+                } transition-all duration-300 touch-target`}
                 aria-label="Wishlist"
               >
                 <Heart className="w-5 h-5" />
               </Link>
               <Link
                 to="/account"
-                className={`p-1.5 rounded-full ${
+                className={`p-3 rounded-full ${
                   location.pathname === "/account"
-                    ? "bg-[var(--text-accent)]/10 text-accent"
-                    : "text-secondary hover:text-accent hover:bg-[var(--bg-secondary)]/50 dark:text-secondary dark:hover:text-accent"
-                } transition-all duration-300`}
+                    ? "bg-cosmetic-pink-100 text-cosmetic-pink-500 dark:bg-cosmetic-pink-900/30 dark:text-cosmetic-pink-400"
+                    : "text-gray-600 hover:text-cosmetic-pink-500 hover:bg-cosmetic-pink-50 dark:text-gray-300 dark:hover:text-cosmetic-pink-400 dark:hover:bg-gray-800"
+                } transition-all duration-300 touch-target`}
                 aria-label="Account"
               >
                 <User className="w-5 h-5" />
               </Link>
               <Link
                 to="/cart"
-                className={`p-1.5 rounded-full ${
+                className={`p-3 rounded-full relative ${
                   location.pathname === "/cart"
-                    ? "bg-[var(--text-accent)]/10 text-accent"
-                    : "text-secondary hover:text-accent hover:bg-[var(--bg-secondary)]/50 dark:text-secondary dark:hover:text-accent"
-                } transition-all duration-300`}
+                    ? "bg-cosmetic-pink-100 text-cosmetic-pink-500 dark:bg-cosmetic-pink-900/30 dark:text-cosmetic-pink-400"
+                    : "text-gray-600 hover:text-cosmetic-pink-500 hover:bg-cosmetic-pink-50 dark:text-gray-300 dark:hover:text-cosmetic-pink-400 dark:hover:bg-gray-800"
+                } transition-all duration-300 touch-target`}
                 aria-label="Cart"
               >
                 <ShoppingCart className="w-5 h-5" />
+                <span className="absolute -top-1 -right-1 bg-cosmetic-pink-500 text-white dark:text-white text-xs rounded-full h-5 w-5 flex items-center justify-center bg-red-500 ">
+                  3
+                </span>
               </Link>
             </div>
 
@@ -185,7 +188,7 @@ const Header: React.FC = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <nav className="py-4 mt-2 border-t border-[var(--border)] dark:border-[var(--border)] md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-800 shadow-lg z-20">
+        <nav className="py-4 mt-2 border-t border-gray-200 dark:border-gray-700 md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-800 shadow-lg z-20">
           <div className="flex flex-col space-y-3 px-4">
             {[
               { path: "/", labelKey: "navbar.home" },
@@ -201,10 +204,10 @@ const Header: React.FC = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`py-2 font-medium transition-colors duration-200 text-secondary ${
+                  className={`py-3 font-medium transition-colors duration-200 text-gray-600 touch-target ${
                     isActive
-                      ? "text-accent border-b border-accent"
-                      : "text-secondary hover:text-accent dark:text-secondary dark:hover:text-accent"
+                      ? "text-cosmetic-pink-500 border-b border-cosmetic-pink-500"
+                      : "text-gray-600 hover:text-cosmetic-pink-500 dark:text-gray-300 dark:hover:text-cosmetic-pink-400"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -212,14 +215,14 @@ const Header: React.FC = () => {
                 </Link>
               );
             })}
-            <div className="grid grid-cols-4 gap-2 pt-2 mt-2 border-t border-[var(--border)] dark:border-[var(--border)]">
+            <div className="grid grid-cols-4 gap-2 pt-2 mt-2 border-t border-gray-200 dark:border-gray-700">
               <div className="flex flex-col items-center">
                 <NotificationDropdown
                   notifications={notifications}
                   onMarkAsRead={markAsRead}
                   onMarkAllAsRead={markAllAsRead}
                 />
-                <span className="text-xs mt-1 truncate max-w-[60px]">
+                <span className="text-xs mt-1 truncate max-w-[60px] text-gray-600 dark:text-gray-400">
                   {t("notifications.title")}
                 </span>
               </div>
@@ -227,12 +230,12 @@ const Header: React.FC = () => {
                 to="/wishlist"
                 className={`flex flex-col items-center justify-center rounded-xl p-2 ${
                   location.pathname === "/wishlist"
-                    ? "bg-[var(--text-accent)]/10 text-accent"
-                    : "text-secondary hover:text-accent hover:bg-[var(--bg-secondary)]/50 dark:text-secondary dark:hover:text-accent"
+                    ? "bg-cosmetic-pink-100 text-cosmetic-pink-500 dark:bg-cosmetic-pink-900/30 dark:text-cosmetic-pink-400"
+                    : "text-gray-600 hover:text-cosmetic-pink-500 hover:bg-cosmetic-pink-50 dark:text-gray-300 dark:hover:text-cosmetic-pink-400 dark:hover:bg-gray-800"
                 } transition-all duration-300`}
               >
                 <Heart className="w-5 h-5" />
-                <span className="text-xs mt-1 truncate max-w-[60px]">
+                <span className="text-xs mt-1 truncate max-w-[60px] text-gray-600 dark:text-gray-400">
                   {t("common.wishlist")}
                 </span>
               </Link>
@@ -240,12 +243,12 @@ const Header: React.FC = () => {
                 to="/account"
                 className={`flex flex-col items-center justify-center rounded-xl p-2 ${
                   location.pathname === "/account"
-                    ? "bg-[var(--text-accent)]/10 text-accent"
-                    : "text-secondary hover:text-accent hover:bg-[var(--bg-secondary)]/50 dark:text-secondary dark:hover:text-accent"
+                    ? "bg-cosmetic-pink-100 text-cosmetic-pink-500 dark:bg-cosmetic-pink-900/30 dark:text-cosmetic-pink-400"
+                    : "text-gray-600 hover:text-cosmetic-pink-500 hover:bg-cosmetic-pink-50 dark:text-gray-300 dark:hover:text-cosmetic-pink-400 dark:hover:bg-gray-800"
                 } transition-all duration-300`}
               >
                 <User className="w-5 h-5" />
-                <span className="text-xs mt-1 truncate max-w-[60px]">
+                <span className="text-xs mt-1 truncate max-w-[60px] text-gray-600 dark:text-gray-400">
                   {t("common.account")}
                 </span>
               </Link>
@@ -253,12 +256,15 @@ const Header: React.FC = () => {
                 to="/cart"
                 className={`flex flex-col items-center justify-center rounded-xl p-2 ${
                   location.pathname === "/cart"
-                    ? "bg-[var(--text-accent)]/10 text-accent"
-                    : "text-secondary hover:text-accent hover:bg-[var(--bg-secondary)]/50 dark:text-secondary dark:hover:text-accent"
-                } transition-all duration-300`}
+                    ? "bg-cosmetic-pink-100 text-cosmetic-pink-500 dark:bg-cosmetic-pink-900/30 dark:text-cosmetic-pink-400"
+                    : "text-gray-600 hover:text-cosmetic-pink-500 hover:bg-cosmetic-pink-50 dark:text-gray-300 dark:hover:text-cosmetic-pink-400 dark:hover:bg-gray-800"
+                } transition-all duration-300 relative`}
               >
                 <ShoppingCart className="w-5 h-5" />
-                <span className="text-xs mt-1 truncate max-w-[60px]">
+                <span className="absolute top-0 right-0 -mt-1 -mr-1 bg-cosmetic-pink-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                  3
+                </span>
+                <span className="text-xs mt-1 truncate max-w-[60px] text-gray-600 dark:text-gray-400">
                   {t("common.cart")}
                 </span>
               </Link>
@@ -269,7 +275,7 @@ const Header: React.FC = () => {
 
       {/* Medium Screen Navigation */}
       {isMenuOpen && (
-        <nav className="py-4 mt-2 border-t border-[var(--border)] dark:border-[var(--border)] hidden md:flex lg:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-800 shadow-lg z-20">
+        <nav className="py-4 mt-2 border-t border-gray-200 dark:border-gray-700 hidden md:flex lg:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-800 shadow-lg z-20">
           <div className="flex flex-col space-y-3 px-4 w-full">
             {[
               { path: "/", labelKey: "navbar.home" },
@@ -285,10 +291,10 @@ const Header: React.FC = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`py-2 font-medium transition-colors duration-200 text-secondary ${
+                  className={`py-3 font-medium transition-colors duration-200 text-gray-600 touch-target ${
                     isActive
-                      ? "text-accent border-b border-accent"
-                      : "text-secondary hover:text-accent dark:text-secondary dark:hover:text-accent"
+                      ? "text-cosmetic-pink-500 border-b border-cosmetic-pink-500"
+                      : "text-gray-600 hover:text-cosmetic-pink-500 dark:text-gray-300 dark:hover:text-cosmetic-pink-400"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -296,14 +302,14 @@ const Header: React.FC = () => {
                 </Link>
               );
             })}
-            <div className="grid grid-cols-4 gap-2 pt-2 mt-2 border-t border-[var(--border)] dark:border-[var(--border)]">
+            <div className="grid grid-cols-4 gap-2 pt-2 mt-2 border-t border-gray-200 dark:border-gray-700">
               <div className="flex flex-col items-center">
                 <NotificationDropdown
                   notifications={notifications}
                   onMarkAsRead={markAsRead}
                   onMarkAllAsRead={markAllAsRead}
                 />
-                <span className="text-xs mt-1 truncate max-w-[60px]">
+                <span className="text-xs mt-1 truncate max-w-[60px] text-gray-600 dark:text-gray-400">
                   {t("notifications.title")}
                 </span>
               </div>
@@ -311,12 +317,12 @@ const Header: React.FC = () => {
                 to="/wishlist"
                 className={`flex flex-col items-center justify-center rounded-xl p-2 ${
                   location.pathname === "/wishlist"
-                    ? "bg-[var(--text-accent)]/10 text-accent"
-                    : "text-secondary hover:text-accent hover:bg-[var(--bg-secondary)]/50 dark:text-secondary dark:hover:text-accent"
+                    ? "bg-cosmetic-pink-100 text-cosmetic-pink-500 dark:bg-cosmetic-pink-900/30 dark:text-cosmetic-pink-400"
+                    : "text-gray-600 hover:text-cosmetic-pink-500 hover:bg-cosmetic-pink-50 dark:text-gray-300 dark:hover:text-cosmetic-pink-400 dark:hover:bg-gray-800"
                 } transition-all duration-300`}
               >
                 <Heart className="w-5 h-5" />
-                <span className="text-xs mt-1 truncate max-w-[60px]">
+                <span className="text-xs mt-1 truncate max-w-[60px] text-gray-600 dark:text-gray-400">
                   {t("common.wishlist")}
                 </span>
               </Link>
@@ -324,12 +330,12 @@ const Header: React.FC = () => {
                 to="/account"
                 className={`flex flex-col items-center justify-center rounded-xl p-2 ${
                   location.pathname === "/account"
-                    ? "bg-[var(--text-accent)]/10 text-accent"
-                    : "text-secondary hover:text-accent hover:bg-[var(--bg-secondary)]/50 dark:text-secondary dark:hover:text-accent"
+                    ? "bg-cosmetic-pink-100 text-cosmetic-pink-500 dark:bg-cosmetic-pink-900/30 dark:text-cosmetic-pink-400"
+                    : "text-gray-600 hover:text-cosmetic-pink-500 hover:bg-cosmetic-pink-50 dark:text-gray-300 dark:hover:text-cosmetic-pink-400 dark:hover:bg-gray-800"
                 } transition-all duration-300`}
               >
                 <User className="w-5 h-5" />
-                <span className="text-xs mt-1 truncate max-w-[60px]">
+                <span className="text-xs mt-1 truncate max-w-[60px] text-gray-600 dark:text-gray-400">
                   {t("common.account")}
                 </span>
               </Link>
@@ -337,12 +343,15 @@ const Header: React.FC = () => {
                 to="/cart"
                 className={`flex flex-col items-center justify-center rounded-xl p-2 ${
                   location.pathname === "/cart"
-                    ? "bg-[var(--text-accent)]/10 text-accent"
-                    : "text-secondary hover:text-accent hover:bg-[var(--bg-secondary)]/50 dark:text-secondary dark:hover:text-accent"
-                } transition-all duration-300`}
+                    ? "bg-cosmetic-pink-100 text-cosmetic-pink-500 dark:bg-cosmetic-pink-900/30 dark:text-cosmetic-pink-400"
+                    : "text-gray-600 hover:text-cosmetic-pink-500 hover:bg-cosmetic-pink-50 dark:text-gray-300 dark:hover:text-cosmetic-pink-400 dark:hover:bg-gray-800"
+                } transition-all duration-300 relative`}
               >
                 <ShoppingCart className="w-5 h-5" />
-                <span className="text-xs mt-1 truncate max-w-[60px]">
+                <span className="absolute top-0 right-0 -mt-1 -mr-1 bg-cosmetic-pink-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                  3
+                </span>
+                <span className="text-xs mt-1 truncate max-w-[60px] text-gray-600 dark:text-gray-400">
                   {t("common.cart")}
                 </span>
               </Link>
@@ -350,8 +359,6 @@ const Header: React.FC = () => {
           </div>
         </nav>
       )}
-
-
     </header>
   );
 };

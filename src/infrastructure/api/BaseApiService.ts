@@ -16,7 +16,7 @@ export abstract class BaseApiService {
 
     // Add request interceptor
     this.apiClient.interceptors.request.use(
-      this.handleRequest.bind(this),
+      (config) => this.handleRequest(config),
       this.handleRequestError.bind(this)
     );
 

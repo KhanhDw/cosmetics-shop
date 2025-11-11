@@ -49,7 +49,7 @@ const ProductListingPage: React.FC = () => {
 
   // Filter and sort products
   const filteredAndSortedProducts = useMemo(() => {
-    let filtered = products.filter((product) => {
+    const filtered = products.filter((product) => {
       const matchesCategory =
         selectedCategories.length === 0 ||
         selectedCategories.includes(product.category);

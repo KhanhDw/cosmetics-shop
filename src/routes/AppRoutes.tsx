@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import ScrollToTop from "@/components/common/ScrollToTop";
 
 // Lazy load page components
 const Home = lazy(() => import("@/pages/Home"));
@@ -50,6 +51,7 @@ export const router = createBrowserRouter([
     path: "/",
     element: (
       <MainLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <Home />
         </Suspense>
@@ -60,6 +62,7 @@ export const router = createBrowserRouter([
     path: "/products",
     element: (
       <MainLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <Products />
         </Suspense>
@@ -70,6 +73,7 @@ export const router = createBrowserRouter([
     path: "/product/:id",
     element: (
       <MainLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <ProductDetail />
         </Suspense>
@@ -80,6 +84,7 @@ export const router = createBrowserRouter([
     path: "/categories",
     element: (
       <MainLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <Categories />
         </Suspense>
@@ -90,6 +95,7 @@ export const router = createBrowserRouter([
     path: "/category/:id",
     element: (
       <MainLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <CategoryDetailPage />
         </Suspense>
@@ -100,6 +106,7 @@ export const router = createBrowserRouter([
     path: "/about",
     element: (
       <MainLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <About />
         </Suspense>
@@ -110,6 +117,7 @@ export const router = createBrowserRouter([
     path: "/contact",
     element: (
       <MainLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <Contact />
         </Suspense>
@@ -120,6 +128,7 @@ export const router = createBrowserRouter([
     path: "/blogs",
     element: (
       <MainLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <Blogs />
         </Suspense>
@@ -130,6 +139,7 @@ export const router = createBrowserRouter([
     path: "/blog/:id",
     element: (
       <MainLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <BlogDetail />
         </Suspense>
@@ -139,23 +149,30 @@ export const router = createBrowserRouter([
   {
     path: "/login",
     element: (
-      <Suspense fallback={<PageLoader />}>
-        <LoginPage />
-      </Suspense>
+      <>
+        <ScrollToTop />
+        <Suspense fallback={<PageLoader />}>
+          <LoginPage />
+        </Suspense>
+      </>
     ),
   },
   {
     path: "/register",
     element: (
-      <Suspense fallback={<PageLoader />}>
-        <RegisterPage />
-      </Suspense>
+      <>
+        <ScrollToTop />
+        <Suspense fallback={<PageLoader />}>
+          <RegisterPage />
+        </Suspense>
+      </>
     ),
   },
   {
     path: "/wishlist",
     element: (
       <MainLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <WishlistPage />
         </Suspense>
@@ -166,6 +183,7 @@ export const router = createBrowserRouter([
     path: "/notifications",
     element: (
       <MainLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <AllNotificationsPage />
         </Suspense>
@@ -176,6 +194,7 @@ export const router = createBrowserRouter([
     path: "/cart",
     element: (
       <MainLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <CartPage />
         </Suspense>
@@ -186,6 +205,7 @@ export const router = createBrowserRouter([
     path: "/payment",
     element: (
       <CheckoutLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <PaymentPage />
         </Suspense>
@@ -196,6 +216,7 @@ export const router = createBrowserRouter([
     path: "/order-success",
     element: (
       <CheckoutLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <OrderConfirmationPage />
         </Suspense>
@@ -206,6 +227,7 @@ export const router = createBrowserRouter([
     path: "/order-failure",
     element: (
       <CheckoutLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <OrderFailurePage />
         </Suspense>
@@ -216,6 +238,7 @@ export const router = createBrowserRouter([
     path: "/support",
     element: (
       <MainLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <SupportPage />
         </Suspense>
@@ -226,6 +249,7 @@ export const router = createBrowserRouter([
     path: "/promotions",
     element: (
       <MainLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <PromotionsPage />
         </Suspense>
@@ -234,7 +258,12 @@ export const router = createBrowserRouter([
   },
   {
     path: "/account",
-    element: <AccountLayout />,
+    element: (
+      <>
+        <ScrollToTop />
+        <AccountLayout />
+      </>
+    ),
     children: [
       {
         index: true,
@@ -257,15 +286,19 @@ export const router = createBrowserRouter([
   {
     path: "/admin/*",
     element: (
-      <Suspense fallback={<PageLoader />}>
-        <AdminApp />
-      </Suspense>
+      <>
+        <ScrollToTop />
+        <Suspense fallback={<PageLoader />}>
+          <AdminApp />
+        </Suspense>
+      </>
     ),
   },
   {
     path: "*",
     element: (
       <MainLayout>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <NotFound />
         </Suspense>

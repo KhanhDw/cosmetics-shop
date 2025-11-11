@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface ErrorFallbackProps {
   error: Error | null;
@@ -6,6 +7,8 @@ interface ErrorFallbackProps {
 }
 
 const ErrorFallback: React.FC<ErrorFallbackProps> = ({ error, resetError }) => {
+  const { t } = useTranslation();
+  
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
       <div className="bg-red-100 dark:bg-red-800/30 p-6 rounded-full mb-4">
@@ -25,11 +28,11 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({ error, resetError }) => {
         </svg>
       </div>
       
-      <h2 className="text-2xl font-bold text-red-800 dark:text-red-200 mb-2">Oops, something went wrong!</h2>
+      <h2 className="text-2xl font-bold text-red-800 dark:text-red-200 mb-2">{t('common.error_occurred')}</h2>
       
       {error && (
         <p className="text-red-600 dark:text-red-300 mb-4 text-center max-w-md">
-          {error.message || 'An unexpected error occurred'}
+          {error.message || t('common.unexpected_error')}
         </p>
       )}
       
@@ -37,11 +40,11 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({ error, resetError }) => {
         onClick={resetError}
         className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors"
       >
-        Try Again
+        {t('common.try_again')}
       </button>
       
       <p className="text-gray-500 dark:text-gray-400 text-sm mt-4 text-center">
-        If the problem persists, please contact our support team.
+        {t('common.contact_support_if_persistent')}
       </p>
     </div>
   );

@@ -5,9 +5,9 @@ import { useAppState } from '@/context/AppContext';
 // Redirects to login if user is not authenticated
 const withAuth = <P extends object>(WrappedComponent: React.ComponentType<P>) => {
   return (props: P) => {
-    const { state } = useAppState();
+    const appState = useAppState();
     
-    if (!state.auth.isAuthenticated) {
+    if (!appState.auth.isAuthenticated) {
       // Redirect to login page
       React.useEffect(() => {
         window.location.href = '/login';

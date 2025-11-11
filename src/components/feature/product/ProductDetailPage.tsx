@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Product, Review } from "@/types";
 
 const ProductDetailPage: React.FC = () => {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
 
   // Mock product data (in a real app, this would come from an API based on the id)
@@ -249,14 +251,14 @@ const ProductDetailPage: React.FC = () => {
                 </div>
                 <span className="ml-3 text-[color:var(--text-secondary)] text-lg">
                   <span className="sr-only">Rated </span>({product.reviewCount}{" "}
-                  đánh giá)
+                  {t("common.reviews")})
                 </span>
               </div>
 
               {product.sizes && product.sizes.length > 0 && (
                 <div className="mb-8">
                   <h3 className="text-lg font-medium text-[color:var(--text-primary)] mb-3">
-                    Dung tích
+                    {t("product.size")}
                   </h3>
                   <div className="flex space-x-3">
                     {product.sizes.map((size, index) => (
@@ -273,7 +275,7 @@ const ProductDetailPage: React.FC = () => {
 
               <div className="mb-8">
                 <h3 className="text-lg font-medium text-[color:var(--text-primary)] mb-3">
-                  Số lượng
+                  {t("common.quantity")}
                 </h3>
                 <div className="flex items-center max-w-xs">
                   <button
@@ -299,10 +301,10 @@ const ProductDetailPage: React.FC = () => {
 
               <div className="grid grid-cols-2 gap-5 mb-8">
                 <button className="bg-gradient-to-r from-[color:var(--text-accent)] to-[color:var(--text-secondary)] text-white py-4 px-6 rounded-xl font-semibold hover:from-[color:var(--text-secondary)] hover:to-[color:var(--text-accent)] transition-all duration-300 shadow-md hover:shadow-lg">
-                  Thêm vào giỏ hàng
+                  {t("common.add_to_cart")}
                 </button>
                 <button className="bg-gradient-to-r from-[color:var(--text-primary)] to-black text-white py-4 px-6 rounded-xl font-semibold hover:from-[color:var(--text-secondary)] hover:to-black transition-all duration-300 shadow-md hover:shadow-lg">
-                  Mua ngay
+                  {t("common.buy_now")}
                 </button>
               </div>
 
@@ -333,10 +335,10 @@ const ProductDetailPage: React.FC = () => {
                       : "text-[color:var(--text-secondary)] hover:text-[color:var(--text-primary)]"
                   }`}
                 >
-                  {tab === "description" && "Mô tả sản phẩm"}
-                  {tab === "usage" && "Hướng dẫn sử dụng"}
-                  {tab === "ingredients" && "Thành phần"}
-                  {tab === "storage" && "Bảo quản & HSD"}
+                  {tab === "description" && t("product.description")}
+                  {tab === "usage" && t("product.usage")}
+                  {tab === "ingredients" && t("product.ingredients")}
+                  {tab === "storage" && t("product.storage")}
                 </button>
               ))}
             </nav>
@@ -351,11 +353,11 @@ const ProductDetailPage: React.FC = () => {
                   Với công nghệ Micro-Luminance độc quyền, sản phẩm giúp làn da
                   trở nên{" "}
                   <em className="text-[color:var(--text-accent)]">
-                    mịn như lụa
+                    {t("product.smooth_as_silk")}
                   </em>
                   ,{" "}
-                  <em className="text-[color:var(--text-accent)]">tươi mới</em>{" "}
-                  mỗi sáng thức dậy.
+                  <em className="text-[color:var(--text-accent)]">{t("product.fresh_every_morning")}</em>{" "}
+                  {t("product.every_morning_awakening")}.
                 </p>
               </div>
             )}
@@ -471,7 +473,7 @@ const ProductDetailPage: React.FC = () => {
             ))}
             <div className="mt-8 text-center">
               <button className="bg-gradient-to-r from-[color:var(--text-accent)] to-[color:var(--text-secondary)] text-white py-3 px-8 rounded-xl font-semibold hover:from-[color:var(--text-secondary)] hover:to-[color:var(--text-accent)] transition-all duration-300 shadow-md">
-                Viết đánh giá của bạn
+                {t("product.add_review")}
               </button>
             </div>
           </div>
@@ -480,7 +482,7 @@ const ProductDetailPage: React.FC = () => {
         {/* Related Products Carousel */}
         <div className="mb-16 fade-in-element opacity-0 transition-opacity duration-500 delay-300">
           <h2 className="text-2xl font-bold text-[color:var(--text-primary)] mb-8">
-            Sản phẩm liên quan
+            {t("product.related_products")}
           </h2>
           <div className="relative">
             <div className="overflow-hidden">
@@ -529,7 +531,7 @@ const ProductDetailPage: React.FC = () => {
                         {product.price.toLocaleString("vi-VN")}₫
                       </div>
                       <button className="w-full bg-gradient-to-r from-[color:var(--bg-secondary)] to-[color:var(--bg-tertiary)] text-[color:var(--text-primary)] py-2.5 rounded-lg font-medium hover:from-[color:var(--bg-tertiary)] hover:to-[color:var(--bg-secondary)] transition-colors duration-300 text-sm">
-                        Xem chi tiết
+                        {t("common.view")}
                       </button>
                     </div>
                   </div>
@@ -543,18 +545,10 @@ const ProductDetailPage: React.FC = () => {
         <div className="bg-gradient-to-r from-[color:var(--bg-secondary)] via-[color:var(--bg-primary)] to-[color:var(--bg-tertiary)] rounded-2xl p-10 mb-16 text-center border border-[color:var(--border)] shadow-sm fade-in-element opacity-0 transition-opacity duration-500 delay-400">
           <div className="max-w-2xl mx-auto">
             <h3 className="text-2xl md:text-3xl font-bold text-[color:var(--text-primary)] mb-3">
-              🌸 Bộ dưỡng da toàn diện – giảm 15% khi mua combo
+              {t("product.combo_banner_title")}
             </h3>
             <p className="text-[color:var(--text-secondary)] mb-6 text-lg">
-              Trải nghiệm làn da{" "}
-              <span className="text-[color:var(--text-accent)] font-medium">
-                mịn màng
-              </span>
-              ,{" "}
-              <span className="text-[color:var(--text-accent)] font-medium">
-                rạng rỡ
-              </span>{" "}
-              chỉ có trong combo chăm sóc da cao cấp
+              {t("product.combo_banner_description")}
             </p>
             <button className="bg-gradient-to-r from-[color:var(--text-accent)] to-[color:var(--text-secondary)] text-white py-4 px-10 rounded-xl font-semibold hover:from-[color:var(--text-secondary)] hover:to-[color:var(--text-accent)] transition-all duration-300 shadow-lg hover:shadow-xl">
               Khám phá ngay

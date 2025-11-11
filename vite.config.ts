@@ -25,11 +25,6 @@ export default defineConfig({
           'vendor-i18n': ['i18next', 'react-i18next', 'i18next-browser-languagedetector'],
           'vendor-icons': ['lucide-react', 'react-icons'],
           'vendor-utils': ['zustand'], // if using zustand
-          // Split admin-specific code
-          'admin-components': () => 'admin-components',
-          // Split feature-specific code
-          'product-features': () => 'product-features',
-          'auth-features': () => 'auth-features',
         }
       }
     }

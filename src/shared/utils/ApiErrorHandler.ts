@@ -18,7 +18,7 @@ export class ApiErrorHandler {
         if (response) {
           // Server responded with error status
           return {
-            message: response.data?.message || this.getStatusText(response.status),
+            message: (response.data as {message?: string})?.message || this.getStatusText(response.status),
             status: response.status,
             code: `HTTP_${response.status}`,
             details: response.data
@@ -40,7 +40,7 @@ export class ApiErrorHandler {
 
       // Handle other types of errors
       return {
-        message: error.message,
+        message: (error as Error).message || 'An unknown error occurred',
         code: error.constructor.name
       };
     }

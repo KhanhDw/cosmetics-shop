@@ -1,7 +1,7 @@
 import React from 'react';
 import { Product } from '@/shared/types';
 import { useProductService } from '../hooks/useProductService';
-import { ProductCard } from '@/components/feature/product/ProductCard';
+import ProductCard from '@/components/feature/product/ProductCard';
 
 interface ProductListContainerProps {
   categoryId?: string;

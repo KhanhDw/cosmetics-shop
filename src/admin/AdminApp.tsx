@@ -23,8 +23,8 @@ const AdminApp: React.FC = () => {
           <Route path="/" element={<Dashboard />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/products" element={<ProductList />} />
-          <Route path="/products/new" element={<ProductForm />} />
-          <Route path="/products/:id" element={<ProductForm />} />
+          <Route path="/products/new" element={<ProductForm onSubmit={() => {}} onCancel={() => {}} />} />
+          <Route path="/products/:id" element={<ProductForm onSubmit={() => {}} onCancel={() => {}} />} />
           <Route path="/categories-brands" element={<CategoriesBrands />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/customers" element={<Customers />} />

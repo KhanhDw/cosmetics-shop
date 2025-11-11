@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Bell, Search, Menu, User, Check, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import AdminThemeToggle from './AdminThemeToggle';
+import React, { useState, useRef, useEffect } from "react";
+import { Bell, Search, Menu, User, Check, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import AdminThemeToggle from "./AdminThemeToggle";
+import { House } from "lucide-react";
 
 interface Notification {
   id: number;
@@ -9,7 +10,7 @@ interface Notification {
   description: string;
   time: string;
   read: boolean;
-  type: 'info' | 'warning' | 'error' | 'success';
+  type: "info" | "warning" | "error" | "success";
 }
 
 interface TopbarProps {
@@ -17,7 +18,8 @@ interface TopbarProps {
 }
 
 const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([
     {
@@ -26,7 +28,7 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
       description: "Order #1005 has been placed for $189.99",
       time: "2 min ago",
       read: false,
-      type: "info"
+      type: "info",
     },
     {
       id: 2,
@@ -34,7 +36,7 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
       description: "Vitamin C Serum stock is running low (5 units remaining)",
       time: "15 min ago",
       read: false,
-      type: "warning"
+      type: "warning",
     },
     {
       id: 3,
@@ -42,7 +44,7 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
       description: "Payment for order #1002 has failed",
       time: "1 hour ago",
       read: true,
-      type: "error"
+      type: "error",
     },
     {
       id: 4,
@@ -50,7 +52,7 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
       description: "Nguyen Van A just registered to the platform",
       time: "3 hours ago",
       read: true,
-      type: "info"
+      type: "info",
     },
     {
       id: 5,
@@ -58,58 +60,78 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
       description: "Daily backup completed successfully",
       time: "5 hours ago",
       read: true,
-      type: "success"
-    }
+      type: "success",
+    },
   ]);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Close notifications dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setShowNotifications(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     // Implement search functionality
-    console.log('Searching for:', searchTerm);
+    console.log("Searching for:", searchTerm);
   };
 
   const markAsRead = (id: number) => {
-    setNotifications(notifications.map(notification => 
-      notification.id === id ? { ...notification, read: true } : notification
-    ));
+    setNotifications(
+      notifications.map((notification) =>
+        notification.id === id ? { ...notification, read: true } : notification
+      )
+    );
   };
 
   const markAllAsRead = () => {
-    setNotifications(notifications.map(notification => ({ ...notification, read: true })));
+    setNotifications(
+      notifications.map((notification) => ({ ...notification, read: true }))
+    );
   };
 
-  const unreadCount = notifications.filter(n => !n.read).length;
-  const notificationIconColor = unreadCount > 0 ? 'text-red-500' : 'text-[var(--admin-text-primary)]';
+  const unreadCount = notifications.filter((n) => !n.read).length;
+  const notificationIconColor =
+    unreadCount > 0 ? "text-red-500" : "text-[var(--admin-text-primary)]";
 
   return (
     <header className="bg-[var(--admin-bg-primary)] border-b border-[var(--admin-border)] px-4 py-3 flex items-center justify-between">
       <div className="flex items-center">
-        {/* Mobile menu button */}
-        <button 
-          className="lg:hidden mr-4 text-[var(--admin-text-primary)]"
-          onClick={toggleSidebar}
-        >
-          <Menu className="w-6 h-6" />
-        </button>
-        
+        {isMobile ? (
+          <button
+            className="lg:hidden mr-4 text-[var(--admin-text-primary)] p-2 touch-target"
+            onClick={toggleSidebar}
+          >
+            <Menu className="w-6 h-6" />
+          </button>
+        ) : null}
         {/* Search bar */}
-        <form onSubmit={handleSearch} className="hidden md:block">
+        <form
+          onSubmit={handleSearch}
+          className="hidden md:block"
+        >
           <div className="relative">
             <input
               type="text"
@@ -127,13 +149,22 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
 
       {/* Right side icons */}
       <div className="flex items-center space-x-4">
+        <Link
+          to={"/"}
+          className="hover:bg-[var(--admin-bg-primary)]"
+        >
+          <House />
+        </Link>
         {/* Admin theme toggle */}
         <AdminThemeToggle />
-        
+
         {/* Notification dropdown */}
-        <div className="relative" ref={dropdownRef}>
-          <button 
-            className="relative p-1 text-[var(--admin-text-primary)] hover:bg-[var(--admin-bg-secondary)] rounded-full"
+        <div
+          className="relative"
+          ref={dropdownRef}
+        >
+          <button
+            className="relative p-3 text-[var(--admin-text-primary)] hover:bg-[var(--admin-bg-secondary)] rounded-full touch-target"
             onClick={() => setShowNotifications(!showNotifications)}
           >
             <Bell className={`w-6 h-6 ${notificationIconColor}`} />
@@ -147,9 +178,11 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
           {showNotifications && (
             <div className="absolute right-0 mt-2 w-80 bg-[var(--admin-bg-primary)] border border-[var(--admin-border)] rounded-lg shadow-lg z-50">
               <div className="p-4 border-b border-[var(--admin-border)] flex justify-between items-center">
-                <h3 className="text-lg font-semibold text-[var(--admin-text-primary)]">Notifications</h3>
+                <h3 className="text-lg font-semibold text-[var(--admin-text-primary)]">
+                  Notifications
+                </h3>
                 {unreadCount > 0 && (
-                  <button 
+                  <button
                     onClick={markAllAsRead}
                     className="text-sm text-[var(--admin-text-accent)] hover:text-[var(--admin-text-accent)]/80"
                   >
@@ -157,7 +190,7 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
                   </button>
                 )}
               </div>
-              
+
               <div className="max-h-96 overflow-y-auto">
                 {notifications.length === 0 ? (
                   <div className="p-6 text-center text-[var(--admin-text-secondary)]">
@@ -166,29 +199,49 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
                 ) : (
                   <ul>
                     {notifications.map((notification) => (
-                      <li 
-                        key={notification.id} 
+                      <li
+                        key={notification.id}
                         className={`border-b border-[var(--admin-border)] last:border-b-0 p-4 hover:bg-[var(--admin-bg-secondary)] ${
-                          notification.read ? 'bg-transparent' : 'bg-[var(--admin-bg-secondary)]/50'
+                          notification.read
+                            ? "bg-transparent"
+                            : "bg-[var(--admin-bg-secondary)]/50"
                         }`}
                       >
                         <div className="flex items-start">
-                          <div className={`mr-3 mt-1 flex-shrink-0 ${
-                            notification.type === 'info' ? 'text-blue-500' :
-                            notification.type === 'warning' ? 'text-yellow-500' :
-                            notification.type === 'error' ? 'text-red-500' : 'text-green-500'
-                          }`}>
-                            {notification.type === 'info' && <Bell className="w-5 h-5" />}
-                            {notification.type === 'warning' && <Bell className="w-5 h-5" />}
-                            {notification.type === 'error' && <X className="w-5 h-5" />}
-                            {notification.type === 'success' && <Check className="w-5 h-5" />}
+                          <div
+                            className={`mr-3 mt-1 flex-shrink-0 ${
+                              notification.type === "info"
+                                ? "text-blue-500"
+                                : notification.type === "warning"
+                                ? "text-yellow-500"
+                                : notification.type === "error"
+                                ? "text-red-500"
+                                : "text-green-500"
+                            }`}
+                          >
+                            {notification.type === "info" && (
+                              <Bell className="w-5 h-5" />
+                            )}
+                            {notification.type === "warning" && (
+                              <Bell className="w-5 h-5" />
+                            )}
+                            {notification.type === "error" && (
+                              <X className="w-5 h-5" />
+                            )}
+                            {notification.type === "success" && (
+                              <Check className="w-5 h-5" />
+                            )}
                           </div>
-                          
+
                           <div className="flex-1 min-w-0">
                             <div className="flex justify-between">
-                              <p className={`text-sm font-medium ${
-                                notification.read ? 'text-[var(--admin-text-secondary)]' : 'text-[var(--admin-text-primary)]'
-                              }`}>
+                              <p
+                                className={`text-sm font-medium ${
+                                  notification.read
+                                    ? "text-[var(--admin-text-secondary)]"
+                                    : "text-[var(--admin-text-primary)]"
+                                }`}
+                              >
                                 {notification.title}
                               </p>
                               <span className="text-xs text-[var(--admin-text-secondary)] whitespace-nowrap">
@@ -199,26 +252,24 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
                               {notification.description}
                             </p>
                           </div>
-                          
-                          {!notification.read && (
-                            <button 
-                              onClick={() => markAsRead(notification.id)}
-                              className="ml-2 text-[var(--admin-text-secondary)] hover:text-[var(--admin-text-primary)] p-1"
-                              title="Mark as read"
-                            >
-                              <X className="w-4 h-4" />
-                            </button>
-                          )}
+
+                          <button
+                            onClick={() => markAsRead(notification.id)}
+                            className="ml-2 text-[var(--admin-text-secondary)] hover:text-[var(--admin-text-primary)] p-2 touch-target"
+                            title="Mark as read"
+                          >
+                            <X className="w-4 h-4" />
+                          </button>
                         </div>
                       </li>
                     ))}
                   </ul>
                 )}
               </div>
-              
+
               <div className="p-3 border-t border-[var(--admin-border)] text-center">
-                <Link 
-                  to="/admin/notifications" 
+                <Link
+                  to="/admin/notifications"
                   className="text-sm text-[var(--admin-text-accent)] hover:text-[var(--admin-text-accent)]/80"
                 >
                   View all notifications
@@ -229,14 +280,16 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
         </div>
 
         {/* User profile */}
-        <Link 
-          to="/admin/account" 
+        <Link
+          to="/admin/account"
           className="flex items-center space-x-2 hover:underline"
         >
           <div className="w-8 h-8 rounded-full bg-[var(--admin-bg-secondary)] flex items-center justify-center">
             <User className="w-5 h-5 text-[var(--admin-text-accent)]" />
           </div>
-          <span className="hidden md:block text-[var(--admin-text-primary)]">Admin</span>
+          <span className="hidden md:block text-[var(--admin-text-primary)]">
+            Admin
+          </span>
         </Link>
       </div>
     </header>

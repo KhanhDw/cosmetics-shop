@@ -73,11 +73,25 @@ export default {
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
+        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+        'fade-in-up-delay-100': 'fadeInUp 0.6s 100ms ease-out forwards',
+        'fade-in-up-delay-200': 'fadeInUp 0.6s 200ms ease-out forwards',
+        'fade-in-up-delay-300': 'fadeInUp 0.6s 300ms ease-out forwards',
+        'fade-in-up-delay-400': 'fadeInUp 0.6s 400ms ease-out forwards',
+        'fade-in-up-delay-500': 'fadeInUp 0.6s 500ms ease-out forwards',
+        'fade-in-up-delay-600': 'fadeInUp 0.6s 600ms ease-out forwards',
+        'fade-in-up-delay-700': 'fadeInUp 0.6s 700ms ease-out forwards',
+        'fade-in-up-delay-800': 'fadeInUp 0.6s 800ms ease-out forwards',
+        'fade-in-up-delay-900': 'fadeInUp 0.6s 900ms ease-out forwards',
       },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         }
       }
     },

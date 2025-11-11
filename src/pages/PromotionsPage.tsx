@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { Calendar, Clock, Percent, Copy, Star } from "lucide-react";
 
 const PromotionsPage: React.FC = () => {
@@ -165,25 +164,7 @@ const Promotions = () => {
 
   return (
     <div className="min-h-screen bg-linear-to-b from-soft-pink to-white dark:from-gray-800 dark:to-gray-900">
-      {/* Breadcrumb */}
       <div className="max-w-6xl px-4 py-6 mx-auto">
-        <nav className="mb-6">
-          <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-            <li>
-              <Link
-                to="/"
-                className="hover:text-accent dark:text-accent dark:hover:text-accent/90"
-              >
-                Trang chủ
-              </Link>
-            </li>
-            <li className="text-gray-400 dark:text-gray-500">/</li>
-            <li className="font-medium text-gray-900 dark:text-gray-200">
-              Khuyến mãi & Ưu đãi
-            </li>
-          </ol>
-        </nav>
-
         {/* Hero Banner */}
         <div className="relative p-8 mb-12 overflow-hidden rounded-3xl bg-gradient-to-r from-accent/10 via-secondary/10 to-accent/10 dark:from-accent/20 dark:via-gray-700 dark:to-accent/20 md:p-12">
           <div className="absolute inset-0 opacity-50 bg-gradient-to-r from-accent/10 to-secondary/10 dark:from-accent/5 dark:to-gray-700/50"></div>

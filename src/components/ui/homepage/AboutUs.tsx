@@ -1,27 +1,29 @@
 import React from "react";
 import { Shield, Truck, Headphones, RefreshCw } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const AboutUs: React.FC = () => {
+  const { t } = useTranslation();
   const features = [
     {
       icon: Shield,
-      title: "100% Chính Hãng",
-      description: "Nhập khẩu trực tiếp từ nhà sản xuất, đảm bảo chất lượng",
+      title: t("homepage.about.features.genuine"),
+      description: t("homepage.about.features.genuine_desc"),
     },
     {
       icon: Truck,
-      title: "Giao Hàng Nhanh",
-      description: "Giao hàng toàn quốc trong 24-48 giờ",
+      title: t("homepage.about.features.delivery"),
+      description: t("homepage.about.features.delivery_desc"),
     },
     {
       icon: Headphones,
-      title: "Tư Vấn Chuyên Gia",
-      description: "Đội ngũ chuyên gia làm đẹp giàu kinh nghiệm",
+      title: t("homepage.about.features.advisory"),
+      description: t("homepage.about.features.advisory_desc"),
     },
     {
       icon: RefreshCw,
-      title: "Đổi Trả Dễ Dàng",
-      description: "Cam kết đổi trả nếu không hài lòng với sản phẩm",
+      title: t("homepage.about.features.return"),
+      description: t("homepage.about.features.return_desc"),
     },
   ];
 
@@ -31,13 +33,13 @@ const AboutUs: React.FC = () => {
     <section className="py-16 bg-[var(--bg-secondary)]">
       <div className="container">
         <div className="text-center mb-12">
-          {/* h2 sẽ tự động lấy font 'Playfair Display' và màu var(--text-primary) từ CSS hệ thống */}
+          {/* h2 will automatically take font 'Playfair Display' and color var(--text-primary) from CSS system */}
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-            Tại Sao Chọn Chúng Tôi
+            {t("homepage.about.title")}
           </h2>
-          {/* p sẽ tự động lấy màu var(--text-secondary) từ CSS hệ thống */}
+          {/* p will automatically take color var(--text-secondary) from CSS system */}
           <p className="text-lg max-w-2xl mx-auto">
-            Cam kết mang đến trải nghiệm mua sắm mỹ phẩm tốt nhất cho bạn
+            {t("homepage.about.subtitle")}
           </p>
         </div>
 

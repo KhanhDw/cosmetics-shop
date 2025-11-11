@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { BaseApiService } from './BaseApiService';
 import { API_ENDPOINTS } from '@/shared/constants';
 import { CartItem } from '@/shared/types';

@@ -19,7 +19,7 @@ const PromoBanner: React.FC = () => {
             Khám phá bộ sưu tập dưỡng da mùa thu với ưu đãi lên đến 30%. Giữ cho
             làn da của bạn mềm mại và khỏe mạnh suốt mùa thu.
           </p>
-          <button className="bg-white text-[color:var(--text-primary)] !text-[color:var(--text-primary)] px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors">
+          <button className="bg-white !text-[var(--text-primary)] px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors">
             Khám Phá Ngay
           </button>
         </div>

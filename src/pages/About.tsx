@@ -15,86 +15,82 @@ import {
   FaSeedling,
   FaFlagUsa
 } from 'react-icons/fa';
+import { useTranslation } from "react-i18next";
 import { getRandomCosmeticImageUrl } from "@/utils/imageService";
 
 const About: React.FC = () => {
+  const { t } = useTranslation();
+  
   // Sample data for the sections
   const values = [
     {
       icon: <FaLeaf className="w-10 h-10 text-[var(--text-accent)]" />,
-      title: "Tự nhiên & an toàn",
-      description:
-        "Chúng tôi cam kết sử dụng nguyên liệu tự nhiên, an toàn cho làn da, không chứa hóa chất độc hại.",
+      title: t("about.values.natural.title"),
+      description: t("about.values.natural.description"),
     },
     {
       icon: <FaHeart className="w-10 h-10 text-[var(--text-accent)]" />,
-      title: "Tôn vinh phụ nữ",
-      description:
-        "Mỗi sản phẩm được tạo ra để giúp phụ nữ cảm thấy tự tin và rạng rỡ theo cách riêng của họ.",
+      title: t("about.values.celebrate_women.title"),
+      description: t("about.values.celebrate_women.description"),
     },
     {
       icon: <FaRecycle className="w-10 h-10 text-[var(--text-accent)]" />,
-      title: "Phát triển bền vững",
-      description:
-        "Chúng tôi hướng đến những giải pháp thân thiện với môi trường và đạo đức trong sản xuất.",
+      title: t("about.values.sustainability.title"),
+      description: t("about.values.sustainability.description"),
     },
     {
       icon: <FaAward className="w-10 h-10 text-[var(--text-accent)]" />,
-      title: "Chất lượng quốc tế",
-      description:
-        "Đạt tiêu chuẩn quốc tế với quy trình kiểm định nghiêm ngặt và chất lượng kiểm soát cao.",
+      title: t("about.values.quality.title"),
+      description: t("about.values.quality.description"),
     },
   ];
 
   const teamMembers = [
     {
-      name: "Nguyễn Thị Hương",
-      position: "Chuyên gia Da liễu",
-      description: "10 năm kinh nghiệm trong ngành mỹ phẩm",
+      name: t("about.team.member1.name"),
+      position: t("about.team.member1.position"),
+      description: t("about.team.member1.description"),
       image: getRandomCosmeticImageUrl(150, 150),
     },
     {
-      name: "Trần Mỹ Linh",
-      position: "Trưởng phòng Nghiên cứu",
-      description: "Chuyên gia hóa mỹ phẩm, từng công tác tại Pháp",
+      name: t("about.team.member2.name"),
+      position: t("about.team.member2.position"),
+      description: t("about.team.member2.description"),
       image: getRandomCosmeticImageUrl(150, 150),
     },
     {
-      name: "Phạm Thu Trang",
-      position: "Giám đốc Sáng tạo",
-      description: "Kỹ sư công nghệ mỹ phẩm cao cấp",
+      name: t("about.team.member3.name"),
+      position: t("about.team.member3.position"),
+      description: t("about.team.member3.description"),
       image: getRandomCosmeticImageUrl(150, 150),
     },
     {
-      name: "Lê Minh Anh",
-      position: "Giám đốc Sản phẩm",
-      description: "Chuyên gia phát triển sản phẩm từ thiên nhiên",
+      name: t("about.team.member4.name"),
+      position: t("about.team.member4.position"),
+      description: t("about.team.member4.description"),
       image: getRandomCosmeticImageUrl(150, 150),
     },
   ];
 
   const testimonials = [
     {
-      name: "Lan Anh",
-      age: "26 tuổi",
-      comment:
-        "Tôi rất thích kem dưỡng ở đây, chất lượng tuyệt vời và đóng gói cực kỳ tinh tế!",
+      name: t("about.testimonials.customer1.name"),
+      age: t("about.testimonials.customer1.age"),
+      comment: t("about.testimonials.customer1.comment"),
       rating: 5,
       image: getRandomCosmeticImageUrl(150, 150),
     },
     {
-      name: "Minh Tuấn",
-      age: "32 tuổi",
-      comment:
-        "Dịch vụ giao hàng nhanh, tư vấn nhiệt tình. Sẽ ủng hộ shop lâu dài!",
+      name: t("about.testimonials.customer2.name"),
+      age: t("about.testimonials.customer2.age"),
+      comment: t("about.testimonials.customer2.comment"),
       rating: 5,
       image: getRandomCosmeticImageUrl(150, 150),
     },
     {
-      name: "Hạnh Linh",
-      age: "29 tuổi",
-      comment:
-        "Son lì của shop lên màu rất đẹp, lâu trôi và không khô môi. Thích lắm!",
+      name: t("about.testimonials.customer3.name"),
+      age: t("about.testimonials.customer3.age"),
+      comment: t("about.testimonials.customer3.comment"),
       rating: 5,
       image: getRandomCosmeticImageUrl(150, 150),
     },
@@ -108,19 +104,17 @@ const About: React.FC = () => {
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl font-bold font-playfair text-[var(--text-primary)]">
-                Tôn vinh vẻ đẹp tự nhiên của bạn.
+                {t("about.hero.title")}
               </h1>
               <p className="text-lg text-[var(--text-secondary)]">
-                Chúng tôi tin rằng vẻ đẹp thực sự đến từ sự tự tin và tình yêu
-                bản thân. Mỗi sản phẩm của chúng tôi được tạo ra để giúp bạn
-                khám phá và thể hiện vẻ đẹp nội tại.
+                {t("about.hero.description")}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <button className="bg-pastel-pink text-white px-6 py-3 rounded-2xl font-medium flex items-center justify-center hover:bg-pink-600 transition-colors">
-                  Khám phá sản phẩm <ChevronRight className="ml-2 w-5 h-5" />
+                  {t("about.hero.explore_products")} <ChevronRight className="ml-2 w-5 h-5" />
                 </button>
                 <button className="px-6 py-3 rounded-2xl font-medium border border-pastel-pink text-pastel-pink dark:border-rose-400 dark:text-rose-400">
-                  Câu chuyện của chúng tôi
+                  {t("about.hero.our_story")}
                 </button>
               </div>
             </div>
@@ -146,7 +140,7 @@ const About: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold font-playfair text-[var(--text-primary)]">
-                Câu chuyện của chúng tôi
+                {t("about.brand_story.title")}
               </h2>
               <div className="w-24 h-1 bg-[var(--text-accent)] mx-auto mt-4 rounded-full"></div>
             </div>
@@ -162,34 +156,28 @@ const About: React.FC = () => {
               <div className="space-y-6">
                 <div className="p-6 rounded-2xl bg-[var(--card-bg)] shadow-sm">
                   <h3 className="text-xl font-semibold mb-2 text-[var(--text-accent)]">
-                    Năm thành lập
+                    {t("about.brand_story.founded")}
                   </h3>
                   <p className="text-lg text-[var(--text-secondary)]">
-                    Bắt đầu từ năm 2015, chúng tôi đã phát triển một thương hiệu
-                    mỹ phẩm cao cấp với tinh thần lấy chất lượng và sự an toàn
-                    làm nền tảng.
+                    {t("about.brand_story.founded_desc")}
                   </p>
                 </div>
 
                 <div className="p-6 rounded-2xl bg-[var(--card-bg)] shadow-sm">
                   <h3 className="text-xl font-semibold mb-2 text-[var(--text-accent)]">
-                    Tầm nhìn & sứ mệnh
+                    {t("about.brand_story.vision_mission")}
                   </h3>
                   <p className="text-lg text-[var(--text-secondary)]">
-                    Sứ mệnh của chúng tôi là mang đến cho phụ nữ những sản phẩm
-                    làm đẹp tự nhiên, an toàn và hiệu quả, giúp họ tự tin thể
-                    hiện vẻ đẹp riêng biệt của mình.
+                    {t("about.brand_story.mission_desc")}
                   </p>
                 </div>
 
                 <div className="p-6 rounded-2xl bg-[var(--card-bg)] shadow-sm">
                   <h3 className="text-xl font-semibold mb-2 text-[var(--text-accent)]">
-                    Câu chuyện sáng lập
+                    {t("about.brand_story.founding_story")}
                   </h3>
                   <p className="text-lg text-[var(--text-secondary)]">
-                    Chúng tôi bắt đầu với khát vọng giúp phụ nữ tự tin hơn mỗi
-                    ngày, khám phá vẻ đẹp thật của chính mình thông qua các sản
-                    phẩm chất lượng cao được tạo nên từ tình yêu và sự tinh tế.
+                    {t("about.brand_story.founding_desc")}
                   </p>
                 </div>
               </div>
@@ -202,10 +190,10 @@ const About: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold font-playfair text-[var(--text-primary)]">
-                Giá trị cốt lõi
+                {t("about.core_values.title")}
               </h2>
               <p className="text-lg mt-4 max-w-2xl mx-auto text-[var(--text-secondary)]">
-                Những nguyên tắc nền tảng định hướng mọi hoạt động của chúng tôi
+                {t("about.core_values.description")}
               </p>
               <div className="w-24 h-1 bg-[var(--text-accent)] mx-auto mt-4 rounded-full"></div>
             </div>
@@ -234,11 +222,10 @@ const About: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold font-playfair text-gray-900 dark:text-gray-100">
-                Quy trình & cam kết chất lượng
+                {t("about.quality.title")}
               </h2>
               <p className="text-lg mt-4 max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
-                Mỗi sản phẩm trải qua quy trình kiểm định nghiêm ngặt để đảm bảo
-                chất lượng cao nhất
+                {t("about.quality.description")}
               </p>
               <div className="w-24 h-1 bg-pastel-pink mx-auto mt-4 rounded-full"></div>
             </div>
@@ -247,23 +234,23 @@ const About: React.FC = () => {
               {[
                 {
                   step: 1,
-                  title: "Chọn nguyên liệu",
-                  desc: "Chỉ sử dụng nguyên liệu tự nhiên, có nguồn gốc rõ ràng",
+                  title: t("about.quality.steps.1.title"),
+                  desc: t("about.quality.steps.1.description"),
                 },
                 {
                   step: 2,
-                  title: "Kiểm định chất lượng",
-                  desc: "Thử nghiệm an toàn và hiệu quả trên da",
+                  title: t("about.quality.steps.2.title"),
+                  desc: t("about.quality.steps.2.description"),
                 },
                 {
                   step: 3,
-                  title: "Đóng gói cẩn thận",
-                  desc: "Bao bì thân thiện môi trường, bảo quản tốt",
+                  title: t("about.quality.steps.3.title"),
+                  desc: t("about.quality.steps.3.description"),
                 },
                 {
                   step: 4,
-                  title: "Phân phối an toàn",
-                  desc: "Vận chuyển đảm bảo chất lượng sản phẩm",
+                  title: t("about.quality.steps.4.title"),
+                  desc: t("about.quality.steps.4.description"),
                 },
               ].map((process, index) => (
                 <div
@@ -311,10 +298,10 @@ const About: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold font-playfair text-gray-900 dark:text-gray-100">
-                Thành tựu & Đối tác
+                {t("about.achievements.title")}
               </h2>
               <p className="text-lg mt-4 max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
-                Những thành quả và sự công nhận mà chúng tôi đã đạt được
+                {t("about.achievements.description")}
               </p>
               <div className="w-24 h-1 bg-pastel-pink mx-auto mt-4 rounded-full"></div>
             </div>
@@ -322,26 +309,26 @@ const About: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               <div className="p-8 rounded-2xl text-center bg-white dark:bg-neutral-800 shadow-sm">
                 <div className="text-4xl font-bold text-pastel-pink mb-2">
-                  10+
+                  {t("about.achievements.experience_years")}
                 </div>
                 <p className="text-lg text-gray-600 dark:text-gray-300">
-                  Năm kinh nghiệm
+                  {t("about.achievements.experience_desc")}
                 </p>
               </div>
               <div className="p-8 rounded-2xl text-center bg-white dark:bg-neutral-800 shadow-sm">
                 <div className="text-4xl font-bold text-pastel-pink mb-2">
-                  50K+
+                  {t("about.achievements.satisfied_customers")}
                 </div>
                 <p className="text-lg text-gray-600 dark:text-gray-300">
-                  Khách hàng hài lòng
+                  {t("about.achievements.satisfied_desc")}
                 </p>
               </div>
               <div className="p-8 rounded-2xl text-center bg-white dark:bg-neutral-800 shadow-sm">
                 <div className="text-4xl font-bold text-pastel-pink mb-2">
-                  20
+                  {t("about.achievements.distribution_countries")}
                 </div>
                 <p className="text-lg text-gray-600 dark:text-gray-300">
-                  Quốc gia phân phối
+                  {t("about.achievements.distribution_desc")}
                 </p>
               </div>
             </div>
@@ -375,11 +362,10 @@ const About: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold font-playfair text-gray-900 dark:text-gray-100">
-                Đội ngũ chuyên gia
+                {t("about.team.title")}
               </h2>
               <p className="text-lg mt-4 max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
-                Những chuyên gia hàng đầu trong ngành mỹ phẩm đang đồng hành
-                cùng chúng tôi
+                {t("about.team.description")}
               </p>
               <div className="w-24 h-1 bg-pastel-pink mx-auto mt-4 rounded-full"></div>
             </div>
@@ -419,11 +405,10 @@ const About: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold font-playfair text-gray-900 dark:text-gray-100">
-                Khách hàng & Cộng đồng
+                {t("about.testimonials.title")}
               </h2>
               <p className="text-lg mt-4 max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
-                Những đánh giá chân thực từ khách hàng đã trải nghiệm sản phẩm
-                của chúng tôi
+                {t("about.testimonials.description")}
               </p>
               <div className="w-24 h-1 bg-pastel-pink mx-auto mt-4 rounded-full"></div>
             </div>
@@ -475,7 +460,7 @@ const About: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-playfair italic max-w-3xl mx-auto text-gray-800 dark:text-gray-100">
-                "Vẻ đẹp thực sự đến từ sự tự tin và tình yêu bản thân."
+                "{t("about.philosophy.quote")}"
               </div>
               <div className="mt-12 rounded-2xl overflow-hidden shadow-xl max-w-2xl mx-auto">
                 <img
@@ -493,20 +478,19 @@ const About: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold font-playfair text-gray-900 dark:text-gray-100">
-                Trải nghiệm vẻ đẹp tự nhiên cùng chúng tôi.
+                {t("about.contact.title")}
               </h2>
               <p className="text-lg mt-4 max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
-                Hãy là người đầu tiên biết về các sản phẩm mới và ưu đãi đặc
-                biệt
+                {t("about.contact.description")}
               </p>
             </div>
 
             <div className="flex flex-col md:flex-row justify-center gap-6 mb-16">
               <button className="bg-pastel-pink text-white px-8 py-4 rounded-2xl font-medium flex items-center justify-center hover:bg-pink-600 transition-colors">
-                Khám phá sản phẩm <ChevronRight className="ml-2 w-5 h-5" />
+                {t("about.contact.explore_products")} <ChevronRight className="ml-2 w-5 h-5" />
               </button>
               <button className="bg-transparent text-pastel-pink px-8 py-4 rounded-2xl font-medium border-2 border-pastel-pink flex items-center justify-center hover:bg-pastel-pink hover:text-white transition-colors dark:border-rose-400 dark:text-rose-400 dark:hover:bg-rose-800">
-                Đăng ký nhận ưu đãi <ChevronRight className="ml-2 w-5 h-5" />
+                {t("about.contact.subscribe_promotions")} <ChevronRight className="ml-2 w-5 h-5" />
               </button>
             </div>
 
@@ -514,7 +498,7 @@ const About: React.FC = () => {
               <div className="flex">
                 <input
                   type="email"
-                  placeholder="Nhập email của bạn..."
+                  placeholder={t("about.contact.email_placeholder")}
                   className="flex-1 px-4 py-3 rounded-l-2xl border bg-white border-gray-300 focus:outline-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-gray-100"
                 />
                 <button className="bg-pastel-pink text-white px-6 py-3 rounded-r-2xl font-medium">
@@ -525,7 +509,7 @@ const About: React.FC = () => {
 
             <div className="text-center">
               <p className="mb-6 text-gray-600 dark:text-gray-300">
-                Theo dõi chúng tôi trên mạng xã hội
+                {t("about.contact.follow_us")}
               </p>
               <div className="flex justify-center space-x-6">
                 {["Facebook", "Instagram", "TikTok"].map((platform, index) => (

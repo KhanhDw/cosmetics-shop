@@ -12,8 +12,9 @@ const FeaturedProducts: React.FC = () => {
       price: 89.99,
       originalPrice: 119.99,
       image: getRandomCosmeticImageUrl(800, 800),
-      category: "Serum",
+      category: "Best Seller",
       rating: 4.8,
+      reviewCount: 124,
     },
     {
       id: 2,
@@ -21,8 +22,9 @@ const FeaturedProducts: React.FC = () => {
       brand: "Lip Luxe",
       price: 45.0,
       image: getRandomCosmeticImageUrl(800, 800),
-      category: "Makeup",
+      category: "New",
       rating: 4.6,
+      reviewCount: 89,
     },
     {
       id: 3,
@@ -31,8 +33,9 @@ const FeaturedProducts: React.FC = () => {
       price: 79.99,
       originalPrice: 99.99,
       image: getRandomCosmeticImageUrl(800, 800),
-      category: "Tools",
+      category: "Best Seller",
       rating: 4.9,
+      reviewCount: 215,
     },
     {
       id: 4,
@@ -42,6 +45,7 @@ const FeaturedProducts: React.FC = () => {
       image: getRandomCosmeticImageUrl(800, 800),
       category: "Moisturizer",
       rating: 4.7,
+      reviewCount: 156,
     },
     {
       id: 5,
@@ -51,6 +55,7 @@ const FeaturedProducts: React.FC = () => {
       image: getRandomCosmeticImageUrl(800, 800),
       category: "Makeup",
       rating: 4.5,
+      reviewCount: 98,
     },
     {
       id: 6,
@@ -59,23 +64,25 @@ const FeaturedProducts: React.FC = () => {
       price: 95.0,
       originalPrice: 120.0,
       image: getRandomCosmeticImageUrl(800, 800),
-      category: "Moisturizer",
+      category: "Best Seller",
       rating: 4.8,
+      reviewCount: 187,
     },
   ];
 
   const handleAddToCart = (id: number) => {
     // Here you would typically dispatch an action to add the item to cart
+    console.log(`Added product ${id} to cart`);
   };
 
   return (
-    <section className="py-16 bg-[var(--bg-primary)] dark:bg-[var(--bg-primary)]">
+    <section className="py-16 bg-gradient-to-b from-white to-cosmetic-pink-50 dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] !text-[var(--text-primary)] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Featured Products
           </h2>
-          <p className="text-lg text-[var(--text-secondary)] !text-[var(--text-secondary)] max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Discover our handpicked selection of premium beauty products that
             our customers love most
           </p>
@@ -93,7 +100,7 @@ const FeaturedProducts: React.FC = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button className="bg-gradient-to-r from-[var(--text-accent)] to-[var(--text-secondary)] text-white px-8 py-3 rounded-full font-medium hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
+          <button className="bg-gradient-to-r from-cosmetic-pink-500 to-cosmetic-purple-500 text-white px-8 py-3 rounded-full font-medium hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 hover:from-cosmetic-pink-600 hover:to-cosmetic-purple-600 shadow-md">
             View All Products
           </button>
         </div>

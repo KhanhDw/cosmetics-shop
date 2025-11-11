@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Package, Upload, X, Plus } from 'lucide-react';
-import { Product, ProductVariant } from '../types';
+import React, { useState } from "react";
+import { Package, Upload, X, Plus } from "lucide-react";
+import { Product, ProductVariant } from "../types";
 
 interface ProductFormProps {
   product?: Product;
@@ -8,49 +8,57 @@ interface ProductFormProps {
   onCancel: () => void;
 }
 
-const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }) => {
+const ProductForm: React.FC<ProductFormProps> = ({
+  product,
+  onSubmit,
+  onCancel,
+}) => {
   const [formData, setFormData] = useState<Product>({
     id: product?.id || 0,
-    name: product?.name || '',
-    slug: product?.slug || '',
-    description: product?.description || '',
-    shortDescription: product?.shortDescription || '',
+    name: product?.name || "",
+    slug: product?.slug || "",
+    description: product?.description || "",
+    shortDescription: product?.shortDescription || "",
     price: product?.price || 0,
     originalPrice: product?.originalPrice || 0,
     stock: product?.stock || 0,
     categoryId: product?.categoryId || 0,
     brandId: product?.brandId || 0,
     images: product?.images || [],
-    status: product?.status || 'active',
-    expirationDate: product?.expirationDate || '',
+    status: product?.status || "active",
+    expirationDate: product?.expirationDate || "",
     variants: product?.variants || [],
     createdAt: product?.createdAt || new Date().toISOString(),
-    updatedAt: new Date().toISOString()
+    updatedAt: new Date().toISOString(),
   });
 
   const [newVariant, setNewVariant] = useState<ProductVariant>({
     id: 0,
     productId: 0,
-    name: '',
-    sku: '',
+    name: "",
+    sku: "",
     price: 0,
     stock: 0,
-    attributes: {}
+    attributes: {},
   });
 
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       setSelectedImage(file);
-      
+
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result as string);
@@ -63,31 +71,31 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
     if (newVariant.name && newVariant.sku) {
       const variantToAdd = {
         ...newVariant,
-        id: formData.variants.length + 1,
-        productId: formData.id
+        id: (formData.variants?.length ?? 0) + 1,
+        productId: formData.id,
       };
-      
-      setFormData(prev => ({
+
+      setFormData((prev) => ({
         ...prev,
-        variants: [...prev.variants, variantToAdd]
+        variants: [...(prev.variants || []), variantToAdd],
       }));
-      
+
       setNewVariant({
         id: 0,
         productId: 0,
-        name: '',
-        sku: '',
+        name: "",
+        sku: "",
         price: 0,
         stock: 0,
-        attributes: {}
+        attributes: {},
       });
     }
   };
 
   const removeVariant = (index: number) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      variants: prev.variants.filter((_, i) => i !== index)
+      variants: (prev.variants || []).filter((_, i) => i !== index),
     }));
   };
 
@@ -99,14 +107,19 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
   return (
     <div className="max-w-4xl mx-auto">
       <h1 className="text-2xl font-bold text-[var(--admin-text-primary)] mb-6">
-        {product ? 'Edit Product' : 'Add New Product'}
+        {product ? "Edit Product" : "Add New Product"}
       </h1>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6"
+      >
         {/* Product Information */}
         <div className="bg-[var(--card-bg)] dark:bg-[var(--card-bg)] p-6 rounded-xl border border-[var(--border)] dark:border-[var(--border)]">
-          <h2 className="text-xl font-semibold text-[var(--text-primary)] dark:text-[var(--text-primary)] mb-4">Product Information</h2>
-          
+          <h2 className="text-xl font-semibold text-[var(--text-primary)] dark:text-[var(--text-primary)] mb-4">
+            Product Information
+          </h2>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mb-1">
@@ -266,33 +279,39 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
                     type="radio"
                     name="status"
                     value="active"
-                    checked={formData.status === 'active'}
+                    checked={formData.status === "active"}
                     onChange={handleChange}
                     className="text-[var(--text-accent)] focus:ring-[var(--text-accent)]"
                   />
-                  <span className="ml-2 text-[var(--text-primary)] dark:text-[var(--text-primary)]">Active</span>
+                  <span className="ml-2 text-[var(--text-primary)] dark:text-[var(--text-primary)]">
+                    Active
+                  </span>
                 </label>
                 <label className="inline-flex items-center">
                   <input
                     type="radio"
                     name="status"
                     value="inactive"
-                    checked={formData.status === 'inactive'}
+                    checked={formData.status === "inactive"}
                     onChange={handleChange}
                     className="text-[var(--text-accent)] focus:ring-[var(--text-accent)]"
                   />
-                  <span className="ml-2 text-[var(--text-primary)] dark:text-[var(--text-primary)]">Inactive</span>
+                  <span className="ml-2 text-[var(--text-primary)] dark:text-[var(--text-primary)]">
+                    Inactive
+                  </span>
                 </label>
                 <label className="inline-flex items-center">
                   <input
                     type="radio"
                     name="status"
                     value="out_of_stock"
-                    checked={formData.status === 'out_of_stock'}
+                    checked={formData.status === "out_of_stock"}
                     onChange={handleChange}
                     className="text-[var(--text-accent)] focus:ring-[var(--text-accent)]"
                   />
-                  <span className="ml-2 text-[var(--text-primary)] dark:text-[var(--text-primary)]">Out of Stock</span>
+                  <span className="ml-2 text-[var(--text-primary)] dark:text-[var(--text-primary)]">
+                    Out of Stock
+                  </span>
                 </label>
               </div>
             </div>
@@ -301,8 +320,10 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
 
         {/* Images */}
         <div className="bg-[var(--card-bg)] dark:bg-[var(--card-bg)] p-6 rounded-xl border border-[var(--border)] dark:border-[var(--border)]">
-          <h2 className="text-xl font-semibold text-[var(--text-primary)] dark:text-[var(--text-primary)] mb-4">Product Images</h2>
-          
+          <h2 className="text-xl font-semibold text-[var(--text-primary)] dark:text-[var(--text-primary)] mb-4">
+            Product Images
+          </h2>
+
           <div className="flex flex-col md:flex-row gap-6">
             <div className="flex-1">
               <label className="block text-sm font-medium text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mb-1">
@@ -311,9 +332,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
               <div className="border-2 border-dashed border-[var(--border)] dark:border-[var(--border)] rounded-lg p-6 text-center">
                 {imagePreview ? (
                   <div className="relative inline-block">
-                    <img 
-                      src={imagePreview} 
-                      alt="Preview" 
+                    <img
+                      src={imagePreview}
+                      alt="Preview"
                       className="w-32 h-32 object-cover rounded-lg mx-auto"
                     />
                     <button
@@ -330,8 +351,12 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
                 ) : (
                   <div>
                     <Upload className="w-12 h-12 text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mx-auto mb-2" />
-                    <p className="text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mb-2">Click to upload or drag and drop</p>
-                    <p className="text-xs text-[var(--text-secondary)] dark:text-[var(--text-secondary)]">PNG, JPG up to 5MB</p>
+                    <p className="text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mb-2">
+                      Click to upload or drag and drop
+                    </p>
+                    <p className="text-xs text-[var(--text-secondary)] dark:text-[var(--text-secondary)]">
+                      PNG, JPG up to 5MB
+                    </p>
                   </div>
                 )}
                 <input
@@ -341,7 +366,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
                   className="hidden"
                   id="main-image-upload"
                 />
-                <label 
+                <label
                   htmlFor="main-image-upload"
                   className="mt-4 inline-block px-4 py-2 bg-[var(--text-accent)] text-white rounded-lg cursor-pointer hover:bg-[var(--text-accent)]/90 transition-colors"
                 >
@@ -349,15 +374,19 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
                 </label>
               </div>
             </div>
-            
+
             <div className="flex-1">
               <label className="block text-sm font-medium text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mb-1">
                 Gallery Images
               </label>
               <div className="border-2 border-dashed border-[var(--border)] dark:border-[var(--border)] rounded-lg p-6 text-center">
                 <Upload className="w-12 h-12 text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mx-auto mb-2" />
-                <p className="text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mb-2">Click to upload or drag and drop</p>
-                <p className="text-xs text-[var(--text-secondary)] dark:text-[var(--text-secondary)]">PNG, JPG up to 5MB</p>
+                <p className="text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mb-2">
+                  Click to upload or drag and drop
+                </p>
+                <p className="text-xs text-[var(--text-secondary)] dark:text-[var(--text-secondary)]">
+                  PNG, JPG up to 5MB
+                </p>
                 <button
                   type="button"
                   className="mt-4 px-4 py-2 bg-[var(--text-accent)] text-white rounded-lg hover:bg-[var(--text-accent)]/90 transition-colors"
@@ -371,14 +400,23 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
 
         {/* Variants */}
         <div className="bg-[var(--card-bg)] dark:bg-[var(--card-bg)] p-6 rounded-xl border border-[var(--border)] dark:border-[var(--border)]">
-          <h2 className="text-xl font-semibold text-[var(--text-primary)] dark:text-[var(--text-primary)] mb-4">Product Variants</h2>
-          
+          <h2 className="text-xl font-semibold text-[var(--text-primary)] dark:text-[var(--text-primary)] mb-4">
+            Product Variants
+          </h2>
+
           <div className="space-y-4">
-            {formData.variants.map((variant, index) => (
-              <div key={index} className="flex items-center justify-between p-4 border border-[var(--border)] dark:border-[var(--border)] rounded-lg">
+            {(formData.variants || []).map((variant, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-between p-4 border border-[var(--border)] dark:border-[var(--border)] rounded-lg"
+              >
                 <div>
-                  <p className="font-medium text-[var(--text-primary)] dark:text-[var(--text-primary)]">{variant.name}</p>
-                  <p className="text-sm text-[var(--text-secondary)] dark:text-[var(--text-secondary)]">SKU: {variant.sku}</p>
+                  <p className="font-medium text-[var(--text-primary)] dark:text-[var(--text-primary)]">
+                    {variant.name}
+                  </p>
+                  <p className="text-sm text-[var(--text-secondary)] dark:text-[var(--text-secondary)]">
+                    SKU: {variant.sku}
+                  </p>
                 </div>
                 <div className="flex items-center space-x-2">
                   <span className="text-sm text-[var(--text-secondary)] dark:text-[var(--text-secondary)]">
@@ -394,56 +432,78 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
                 </div>
               </div>
             ))}
-            
+
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 border border-[var(--border)] dark:border-[var(--border)] rounded-lg">
               <div>
-                <label className="block text-sm text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mb-1">Variant Name</label>
+                <label className="block text-sm text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mb-1">
+                  Variant Name
+                </label>
                 <input
                   type="text"
                   value={newVariant.name}
-                  onChange={(e) => setNewVariant({...newVariant, name: e.target.value})}
+                  onChange={(e) =>
+                    setNewVariant({ ...newVariant, name: e.target.value })
+                  }
                   className="w-full px-3 py-2 border border-[var(--border)] dark:border-[var(--border)] rounded-lg bg-[var(--bg-primary)] dark:bg-[var(--bg-primary)] text-[var(--text-primary)] dark:text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--text-accent)]"
                   placeholder="e.g. Color Red"
                 />
               </div>
-              
+
               <div>
-                <label className="block text-sm text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mb-1">SKU</label>
+                <label className="block text-sm text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mb-1">
+                  SKU
+                </label>
                 <input
                   type="text"
                   value={newVariant.sku}
-                  onChange={(e) => setNewVariant({...newVariant, sku: e.target.value})}
+                  onChange={(e) =>
+                    setNewVariant({ ...newVariant, sku: e.target.value })
+                  }
                   className="w-full px-3 py-2 border border-[var(--border)] dark:border-[var(--border)] rounded-lg bg-[var(--bg-primary)] dark:bg-[var(--bg-primary)] text-[var(--text-primary)] dark:text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--text-accent)]"
                   placeholder="e.g. SKU-RED-001"
                 />
               </div>
-              
+
               <div>
-                <label className="block text-sm text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mb-1">Price</label>
+                <label className="block text-sm text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mb-1">
+                  Price
+                </label>
                 <input
                   type="number"
-                  value={newVariant.price || ''}
-                  onChange={(e) => setNewVariant({...newVariant, price: parseFloat(e.target.value) || 0})}
+                  value={newVariant.price || ""}
+                  onChange={(e) =>
+                    setNewVariant({
+                      ...newVariant,
+                      price: parseFloat(e.target.value) || 0,
+                    })
+                  }
                   className="w-full px-3 py-2 border border-[var(--border)] dark:border-[var(--border)] rounded-lg bg-[var(--bg-primary)] dark:bg-[var(--bg-primary)] text-[var(--text-primary)] dark:text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--text-accent)]"
                   placeholder="0.00"
                   min="0"
                   step="0.01"
                 />
               </div>
-              
+
               <div>
-                <label className="block text-sm text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mb-1">Stock</label>
+                <label className="block text-sm text-[var(--text-secondary)] dark:text-[var(--text-secondary)] mb-1">
+                  Stock
+                </label>
                 <input
                   type="number"
-                  value={newVariant.stock || ''}
-                  onChange={(e) => setNewVariant({...newVariant, stock: parseInt(e.target.value) || 0})}
+                  value={newVariant.stock || ""}
+                  onChange={(e) =>
+                    setNewVariant({
+                      ...newVariant,
+                      stock: parseInt(e.target.value) || 0,
+                    })
+                  }
                   className="w-full px-3 py-2 border border-[var(--border)] dark:border-[var(--border)] rounded-lg bg-[var(--bg-primary)] dark:bg-[var(--bg-primary)] text-[var(--text-primary)] dark:text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--text-accent)]"
                   placeholder="0"
                   min="0"
                 />
               </div>
             </div>
-            
+
             <button
               type="button"
               onClick={addVariant}
@@ -468,7 +528,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
             type="submit"
             className="px-6 py-2 bg-[var(--text-accent)] text-white rounded-lg hover:bg-[var(--text-accent)]/90 transition-colors"
           >
-            {product ? 'Update Product' : 'Create Product'}
+            {product ? "Update Product" : "Create Product"}
           </button>
         </div>
       </form>

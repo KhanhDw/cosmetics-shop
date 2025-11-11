@@ -152,7 +152,10 @@
     "24_7_support": "Hỗ trợ 24/7",
     "easy_returns": "Dễ dàng trả hàng",
     "quality_guaranteed": "Chất lượng đảm bảo",
-    "try_again": "Thử lại"
+    "try_again": "Thử lại",
+    "error_occurred": "Rất tiếc, đã xảy ra lỗi!",
+    "unexpected_error": "Một lỗi bất ngờ đã xảy ra",
+    "contact_support_if_persistent": "Nếu sự cố vẫn tiếp diễn, vui lòng liên hệ với đội hỗ trợ của chúng tôi."
   },
   "navbar": {
     "home": "Trang chủ",
@@ -194,7 +197,14 @@
     "description": "Mô tả",
     "reviews": "Đánh giá",
     "specifications": "Thông số kỹ thuật",
-    "similar_products": "Sản phẩm tương tự"
+    "similar_products": "Sản phẩm tương tự",
+    "combo_banner_title": "🌸 Bộ dưỡng da toàn diện – giảm 15% khi mua combo",
+    "combo_banner_description": "Trải nghiệm làn da mịn màng, rạng rỡ chỉ có trong combo chăm sóc da cao cấp",
+    "usage": "Hướng dẫn sử dụng",
+    "storage": "Bảo quản & HSD",
+    "smooth_as_silk": "mịn như lụa",
+    "fresh_every_morning": "tươi mới",
+    "every_morning_awakening": "mỗi sáng thức dậy"
   },
   "auth": {
     "login": "Đăng nhập",
@@ -292,7 +302,89 @@
     "free_shipping": "Miễn phí",
     "proceed_to_checkout": "Tiến hành thanh toán",
     "free_shipping_note": "🎉 Miễn phí vận chuyển cho đơn hàng từ 500.000đ",
-    "shipping_threshold_note": "📦 Thêm {{amount}}₫ để được miễn phí vận chuyển"
+    "shipping_threshold_note": "📦 Thêm {{amount}}₫ để được miễn phí vận chuyển",
+    "deselect_all": "Bỏ chọn tất cả",
+    "showing": "Hiển thị",
+    "of": "trong số",
+    "products": "sản phẩm"
+  },
+  "cart": {
+    "no_results_for_query": "Không có sản phẩm nào phù hợp với tìm kiếm của bạn \"{{query}}\"",
+    "try_different_query": "Hãy thử từ khóa khác."
+  },
+  "wishlist": {
+    "empty_title": "Bạn chưa có sản phẩm yêu thích nào 💔",
+    "empty_subtitle": "Danh sách yêu thích của bạn đang trống. Hãy khám phá những sản phẩm tuyệt vời của chúng tôi!"
+  },
+  "homepage": {
+    "about": {
+      "title": "Tại Sao Chọn Chúng Tôi",
+      "subtitle": "Cam kết mang đến trải nghiệm mua sắm mỹ phẩm tốt nhất cho bạn",
+      "features": {
+        "genuine": "100% Chính Hãng",
+        "genuine_desc": "Nhập khẩu trực tiếp từ nhà sản xuất, đảm bảo chất lượng",
+        "delivery": "Giao Hàng Nhanh",
+        "delivery_desc": "Giao hàng toàn quốc trong 24-48 giờ",
+        "advisory": "Tư Vấn Chuyên Gia",
+        "advisory_desc": "Đội ngũ chuyên gia làm đẹp giàu kinh nghiệm",
+        "return": "Đổi Trả Dễ Dàng",
+        "return_desc": "Cam kết đổi trả nếu không hài lòng với sản phẩm"
+      }
+    },
+    "newsletter": {
+      "title": "Giảm 15% Đơn Hàng Đầu Tiên",
+      "description": "Đăng ký nhận bản tin và là người đầu tiên biết về các sản phẩm mới, ưu đãi độc quyền và mẹo làm đẹp",
+      "email_placeholder": "Nhập địa chỉ email của bạn",
+      "subscribe_button": "Đăng ký",
+      "terms": "Không gửi thư rác, hủy đăng ký bất kỳ lúc nào. Bằng việc đăng ký, bạn đồng ý với Chính sách bảo mật của chúng tôi.",
+      "success_message": "Cảm ơn bạn đã đăng ký nhận bản tin của chúng tôi!"
+    },
+    "testimonials": {
+      "title": "Đánh Giá Từ Khách Hàng",
+      "subtitle": "Những chia sẻ chân thực từ khách hàng đã trải nghiệm sản phẩm của chúng tôi",
+      "customer1": {
+        "name": "Lan Anh",
+        "age": "26 tuổi",
+        "comment": "Tôi rất thích kem dưỡng ở đây, chất lượng tuyệt vời và đóng gói cực kỳ tinh tế!"
+      },
+      "customer2": {
+        "name": "Minh Tuấn",
+        "age": "32 tuổi",
+        "comment": "Dịch vụ giao hàng nhanh, tư vấn nhiệt tình. Sẽ ủng hộ shop lâu dài!"
+      },
+      "customer3": {
+        "name": "Hạnh Linh",
+        "age": "29 tuổi",
+        "comment": "Son lì của shop lên màu rất đẹp, lâu trôi và không khô môi. Thích lắm!"
+      },
+      "customer4": {
+        "name": "Quang Vinh",
+        "age": "35 tuổi",
+        "comment": "Sản phẩm chính hãng, giá cả hợp lý. Website dễ sử dụng và thanh toán an toàn."
+      },
+      "customer5": {
+        "name": "Thùy Dương",
+        "age": "24 tuổi",
+        "comment": "Khám phá được nhiều thương hiệu mới nhờ shop. Tư vấn rất chuyên nghiệp!"
+      }
+    },
+    "special_offers": {
+      "title": "Ưu Đãi & Khuyến Mãi",
+      "subtitle": "Đừng bỏ lỡ những ưu đãi hấp dẫn đang chờ đón bạn",
+      "special_deal": "Ưu Đãi Đặc Biệt",
+      "offer1": {
+        "title": "Giảm Đến 30%",
+        "subtitle": "Cho Bộ Dưỡng Da Mùa Thu 🍁",
+        "description": "Ưu đãi đặc biệt cho các sản phẩm dưỡng da mùa thu",
+        "button_text": "Nhận Ưu Đãi Ngay"
+      },
+      "offer2": {
+        "title": "Tặng Son",
+        "subtitle": "Khi Mua Đơn Hàng Trên 1.000.000đ",
+        "description": "Quà tặng son lì cao cấp cho mọi đơn hàng từ 1 triệu",
+        "button_text": "Mua Ngay Để Được Tặng Quà"
+      }
+    }
   },
   "products": {
     "title": "Sản phẩm của chúng tôi",
@@ -335,7 +427,7 @@
     "email_notifications": "Thông báo qua email",
     "push_notifications": "Thông báo đẩy",
     "save_settings": "Lưu cài đặt",
-    "mark_all_read": "Đánh dấu đã đọc tất cả",
+    "mark_all_read": "Đọc tất cả",
     "no_notifications": "Không có thông báo nào",
     "view_all": "Xem tất cả",
     "all_notifications_subtitle": "Bạn có {{count}} thông báo",
@@ -351,6 +443,132 @@
     "search_placeholder": "Tìm kiếm thông báo...",
     "no_notifications_title": "Không có thông báo nào",
     "no_notifications_subtitle": "Bạn sẽ thấy các thông báo mới ở đây",
-    "orders": "Đơn hàng"
+    "orders": "Đơn hàng",
+    "order_status_update": "Đơn hàng #{{orderNumber}} đã được giao thành công"
+  },
+  "about": {
+    "hero": {
+      "title": "Tôn vinh vẻ đẹp tự nhiên của bạn.",
+      "description": "Chúng tôi tin rằng vẻ đẹp thực sự đến từ sự tự tin và tình yêu bản thân. Mỗi sản phẩm của chúng tôi được tạo ra để giúp bạn khám phá và thể hiện vẻ đẹp nội tại.",
+      "explore_products": "Khám phá sản phẩm",
+      "our_story": "Câu chuyện của chúng tôi"
+    },
+    "brand_story": {
+      "title": "Câu chuyện của chúng tôi",
+      "founded": "Năm thành lập",
+      "founded_desc": "Bắt đầu từ năm 2015, chúng tôi đã phát triển một thương hiệu mỹ phẩm cao cấp với tinh thần lấy chất lượng và sự an toàn làm nền tảng.",
+      "vision_mission": "Tầm nhìn & sứ mệnh",
+      "mission_desc": "Sứ mệnh của chúng tôi là mang đến cho phụ nữ những sản phẩm làm đẹp tự nhiên, an toàn và hiệu quả, giúp họ tự tin thể hiện vẻ đẹp riêng biệt của mình.",
+      "founding_story": "Câu chuyện sáng lập",
+      "founding_desc": "Chúng tôi bắt đầu với khát vọng giúp phụ nữ tự tin hơn mỗi ngày, khám phá vẻ đẹp thật của chính mình thông qua các sản phẩm chất lượng cao được tạo nên từ tình yêu và sự tinh tế."
+    },
+    "core_values": {
+      "title": "Giá trị cốt lõi",
+      "description": "Những nguyên tắc nền tảng định hướng mọi hoạt động của chúng tôi"
+    },
+    "values": {
+      "natural": {
+        "title": "Tự nhiên & an toàn",
+        "description": "Chúng tôi cam kết sử dụng nguyên liệu tự nhiên, an toàn cho làn da, không chứa hóa chất độc hại."
+      },
+      "celebrate_women": {
+        "title": "Tôn vinh phụ nữ",
+        "description": "Mỗi sản phẩm được tạo ra để giúp phụ nữ cảm thấy tự tin và rạng rỡ theo cách riêng của họ."
+      },
+      "sustainability": {
+        "title": "Phát triển bền vững",
+        "description": "Chúng tôi hướng đến những giải pháp thân thiện với môi trường và đạo đức trong sản xuất."
+      },
+      "quality": {
+        "title": "Chất lượng quốc tế",
+        "description": "Đạt tiêu chuẩn quốc tế với quy trình kiểm định nghiêm ngặt và chất lượng kiểm soát cao."
+      }
+    },
+    "quality": {
+      "title": "Quy trình & cam kết chất lượng",
+      "description": "Mỗi sản phẩm trải qua quy trình kiểm định nghiêm ngặt để đảm bảo chất lượng cao nhất",
+      "steps": {
+        "1": {
+          "title": "Chọn nguyên liệu",
+          "description": "Chỉ sử dụng nguyên liệu tự nhiên, có nguồn gốc rõ ràng"
+        },
+        "2": {
+          "title": "Kiểm định chất lượng",
+          "description": "Thử nghiệm an toàn và hiệu quả trên da"
+        },
+        "3": {
+          "title": "Đóng gói cẩn thận",
+          "description": "Bao bì thân thiện môi trường, bảo quản tốt"
+        },
+        "4": {
+          "title": "Phân phối an toàn",
+          "description": "Vận chuyển đảm bảo chất lượng sản phẩm"
+        }
+      }
+    },
+    "achievements": {
+      "title": "Thành tựu & Đối tác",
+      "description": "Những thành quả và sự công nhận mà chúng tôi đã đạt được",
+      "experience_years": "10+",
+      "experience_desc": "Năm kinh nghiệm",
+      "satisfied_customers": "50K+",
+      "satisfied_desc": "Khách hàng hài lòng",
+      "distribution_countries": "20",
+      "distribution_desc": "Quốc gia phân phối"
+    },
+    "team": {
+      "title": "Đội ngũ chuyên gia",
+      "description": "Những chuyên gia hàng đầu trong ngành mỹ phẩm đang đồng hành cùng chúng tôi",
+      "member1": {
+        "name": "Nguyễn Thị Hương",
+        "position": "Chuyên gia Da liễu",
+        "description": "10 năm kinh nghiệm trong ngành mỹ phẩm"
+      },
+      "member2": {
+        "name": "Trần Mỹ Linh",
+        "position": "Trưởng phòng Nghiên cứu",
+        "description": "Chuyên gia hóa mỹ phẩm, từng công tác tại Pháp"
+      },
+      "member3": {
+        "name": "Phạm Thu Trang",
+        "position": "Giám đốc Sáng tạo",
+        "description": "Kỹ sư công nghệ mỹ phẩm cao cấp"
+      },
+      "member4": {
+        "name": "Lê Minh Anh",
+        "position": "Giám đốc Sản phẩm",
+        "description": "Chuyên gia phát triển sản phẩm từ thiên nhiên"
+      }
+    },
+    "testimonials": {
+      "title": "Khách hàng & Cộng đồng",
+      "description": "Những đánh giá chân thực từ khách hàng đã trải nghiệm sản phẩm của chúng tôi",
+      "customer1": {
+        "name": "Lan Anh",
+        "age": "26 tuổi",
+        "comment": "Tôi rất thích kem dưỡng ở đây, chất lượng tuyệt vời và đóng gói cực kỳ tinh tế!"
+      },
+      "customer2": {
+        "name": "Minh Tuấn",
+        "age": "32 tuổi",
+        "comment": "Dịch vụ giao hàng nhanh, tư vấn nhiệt tình. Sẽ ủng hộ shop lâu dài!"
+      },
+      "customer3": {
+        "name": "Hạnh Linh",
+        "age": "29 tuổi",
+        "comment": "Son lì của shop lên màu rất đẹp, lâu trôi và không khô môi. Thích lắm!"
+      }
+    },
+    "philosophy": {
+      "quote": "Vẻ đẹp thực sự đến từ sự tự tin và tình yêu bản thân."
+    },
+    "contact": {
+      "title": "Trải nghiệm vẻ đẹp tự nhiên cùng chúng tôi.",
+      "description": "Hãy là người đầu tiên biết về các sản phẩm mới và ưu đãi đặc biệt",
+      "explore_products": "Khám phá sản phẩm",
+      "subscribe_promotions": "Đăng ký nhận ưu đãi",
+      "email_placeholder": "Nhập email của bạn...",
+      "follow_us": "Theo dõi chúng tôi trên mạng xã hội"
+    }
   }
 }

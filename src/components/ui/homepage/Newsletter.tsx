@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { Mail, Gift } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 
 const Newsletter: React.FC = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      toast.success("Thank you for subscribing to our newsletter!");
+      toast.success(t("homepage.newsletter.success_message"));
       setEmail("");
     }
   };
@@ -23,11 +25,10 @@ const Newsletter: React.FC = () => {
         </div>
 
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-          Get 15% Off Your First Order
+          {t("homepage.newsletter.title")}
         </h2>
         <p className="text-xl text-primary/70 mb-8 max-w-2xl mx-auto">
-          Subscribe to our newsletter and be the first to know about new
-          products, exclusive offers, and beauty tips
+          {t("homepage.newsletter.description")}
         </p>
 
         <form
@@ -41,7 +42,7 @@ const Newsletter: React.FC = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address"
+                placeholder={t("homepage.newsletter.email_placeholder")}
                 className="w-full pl-12 pr-4 py-4 rounded-full border-0 focus:ring-2 focus:ring-primary/50 focus:outline-none bg-primary text-primary"
                 required
               />
@@ -50,14 +51,13 @@ const Newsletter: React.FC = () => {
               type="submit"
               className="bg-tertiary  px-8 py-4 rounded-full font-medium hover:bg-secondary transition-colors duration-300 whitespace-nowrap"
             >
-              Subscribe
+              {t("homepage.newsletter.subscribe_button")}
             </button>
           </div>
         </form>
 
         <p className="text-primary/70 text-sm mt-4">
-          No spam, unsubscribe at any time. By subscribing, you agree to our
-          Privacy Policy.
+          {t("homepage.newsletter.terms")}
         </p>
       </div>
     </section>

@@ -48,7 +48,7 @@ const AccountConfig: React.FC = () => {
 
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
     const { name, value } = e.target;
     setProfile((prev) => ({
       ...prev,

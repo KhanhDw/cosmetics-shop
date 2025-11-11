@@ -1,4 +1,5 @@
 import React from "react";
+import { getRandomCosmeticImageUrl, getResponsiveImageAttributes } from "@/utils/imageService";
 
 const FeaturedCategories: React.FC = () => {
   const categories = [
@@ -64,6 +65,8 @@ const FeaturedCategories: React.FC = () => {
                   alt={category.name}
                   className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-500"
                   loading="lazy"
+                  // For responsive images, you can uncomment and use the following:
+                  // {...getResponsiveImageAttributes(200, 300, category.name)}
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--text-accent)]/80 via-transparent to-transparent"></div>

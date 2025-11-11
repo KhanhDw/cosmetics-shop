@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Heart, ShoppingBag, Search } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Product } from "@/types";
 import { getRandomCosmeticImageUrl } from "@/utils/imageService";
@@ -16,6 +17,7 @@ const WishlistPagePage: React.FC = () => {
 };
 
 const WishlistPage: React.FC = () => {
+  const { t } = useTranslation();
   // Mock wishlist data
   const [wishlist, setWishlist] = useState<Product[]>([]);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
@@ -229,20 +231,20 @@ const WishlistPage: React.FC = () => {
               to="/"
               className="transition-colors hover:text-[var(--text-accent)]"
             >
-              Trang chủ
+              {t("navbar.home")}
             </Link>
             <span className="mx-2">/</span>
             <span className="text-[var(--text-primary)]">
-              Danh sách yêu thích
+              {t("common.wishlist")}
             </span>
           </nav>
           <div className="flex flex-col gap-4 mt-4 md:flex-row md:items-center md:justify-between">
             <h1 className="text-3xl font-bold text-[var(--text-primary)] animate-fadeIn">
-              Danh sách yêu thích
+              {t("common.wishlist")}
             </h1>
             {wishlist.length > 0 && (
               <span className="text-lg text-[var(--text-secondary)]">
-                {wishlist.length} sản phẩm
+                {t("cart.items_count", { count: wishlist.length })}
               </span>
             )}
           </div>
@@ -256,7 +258,7 @@ const WishlistPage: React.FC = () => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Tìm kiếm sản phẩm trong danh sách yêu thích..."
+              placeholder={t("cart.search_placeholder")}
               className="w-full py-3 pl-10 pr-4 text-lg border border-[var(--border)] rounded-xl focus:ring-2 focus:ring-[var(--text-accent)] focus:border-[var(--text-accent)] bg-[var(--card-bg)] text-[var(--text-primary)]"
             />
           </div>
@@ -272,8 +274,8 @@ const WishlistPage: React.FC = () => {
                   className="text-sm text-[var(--text-accent)] transition-colors hover:text-[var(--text-accent)]/80"
                 >
                   {selectedItems.length === paginatedWishlist.length
-                    ? "Bỏ chọn tất cả"
-                    : "Chọn tất cả"}
+                    ? t("cart.deselect_all", { defaultValue: "Deselect all" })
+                    : t("cart.select_all")}
                 </button>
                 <span className="text-[var(--text-secondary)]">
                   {selectedItems.length} mục được chọn
@@ -284,7 +286,7 @@ const WishlistPage: React.FC = () => {
                   onClick={removeAllSelected}
                   className="px-4 py-2 text-[var(--text-primary)] transition-colors duration-200 bg-[var(--card-bg)]/50 rounded-lg hover:bg-[var(--card-bg)]/70"
                 >
-                  Xóa
+                  {t("common.delete")}
                 </button>
                 <button
                   onClick={addToCartSelected}
@@ -308,17 +310,16 @@ const WishlistPage: React.FC = () => {
               </div>
             </div>
             <h2 className="mb-2 text-2xl font-bold text-[var(--text-primary)]">
-              Bạn chưa có sản phẩm yêu thích nào 💔
+              {t("wishlist.empty_title", { defaultValue: "You don't have any favorite products yet 💔" })}
             </h2>
             <p className="max-w-md mb-6 text-[var(--text-secondary)]">
-              Danh sách yêu thích của bạn đang trống. Hãy khám phá những sản
-              phẩm tuyệt vời của chúng tôi!
+              {t("wishlist.empty_subtitle", { defaultValue: "Your wishlist is empty. Explore our wonderful products!" })}
             </p>
             <Link
               to="/products"
               className="flex items-center px-6 py-3 text-white transition-colors duration-200 transform bg-[var(--text-accent)] rounded-lg hover:bg-[var(--text-accent)] hover:scale-105"
             >
-              Khám phá sản phẩm ngay
+              {t("cart.explore_products")}
             </Link>
           </div>
         ) : filteredWishlist.length === 0 ? (
@@ -330,17 +331,17 @@ const WishlistPage: React.FC = () => {
               </div>
             </div>
             <h2 className="mb-2 text-2xl font-bold text-[var(--text-primary)]">
-              Không tìm thấy sản phẩm
+              {t("cart.no_results")}
             </h2>
             <p className="max-w-md mb-6 text-[var(--text-secondary)]">
-              Không có sản phẩm nào phù hợp với tìm kiếm của bạn "{searchQuery}
-              ". Hãy thử từ khóa khác.
+              {t("cart.no_results_for_query", { query: searchQuery })}{" "}
+              {t("cart.try_different_query", { defaultValue: "Please try different keywords." })}
             </p>
             <button
               onClick={() => setSearchQuery("")}
               className="px-6 py-3 text-white transition-colors duration-200 transform bg-[var(--text-accent)] rounded-lg hover:bg-[var(--text-accent)]"
             >
-              Xóa tìm kiếm
+              {t("common.clear")} {t("common.search")}
             </button>
           </div>
         ) : (
@@ -420,7 +421,7 @@ const WishlistPage: React.FC = () => {
                         className="flex-1 py-2 bg-[var(--bg-secondary)]/30 text-[var(--text-accent)] rounded-lg hover:bg-[var(--bg-secondary)]/50 transition-colors duration-200 flex items-center justify-center transform hover:scale-[1.02]"
                       >
                         <ShoppingBag className="w-4 h-4 mr-1" />
-                        Thêm vào giỏ
+                        {t("common.add_to_cart")}
                       </button>
                     </div>
                   </div>
@@ -442,7 +443,7 @@ const WishlistPage: React.FC = () => {
                       : "bg-[var(--card-bg)]/50 text-[var(--text-primary)] hover:bg-[var(--card-bg)]/70"
                   }`}
                 >
-                  Trước
+                  {t("common.previous")}
                 </button>
 
                 {/* Page numbers */}
@@ -510,9 +511,9 @@ const WishlistPage: React.FC = () => {
 
             {/* Results info */}
             <div className="mt-4 text-center text-[var(--text-secondary)]">
-              Hiển thị {startIndex + 1}-
-              {Math.min(startIndex + itemsPerPage, filteredWishlist.length)}
-              trong số {filteredWishlist.length} sản phẩm
+              {t("common.showing")} {startIndex + 1}-
+              {Math.min(startIndex + itemsPerPage, filteredWishlist.length)}{" "}
+              {t("common.of")} {filteredWishlist.length} {t("common.products")}
             </div>
           </>
         )}

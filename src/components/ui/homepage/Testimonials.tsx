@@ -1,47 +1,44 @@
 import React from "react";
 import { Star, Quote } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { getBeautyImageUrl } from "@/utils/imageService";
 
 const Testimonials: React.FC = () => {
+  const { t } = useTranslation();
   const testimonials = [
     {
-      name: "Lan Anh",
-      age: "26 tuổi",
+      name: t("homepage.testimonials.customer1.name"),
+      age: t("homepage.testimonials.customer1.age"),
       image: getBeautyImageUrl(150, 150),
-      comment:
-        "Tôi rất thích kem dưỡng ở đây, chất lượng tuyệt vời và đóng gói cực kỳ tinh tế!",
+      comment: t("homepage.testimonials.customer1.comment"),
       rating: 5,
     },
     {
-      name: "Minh Tuấn",
-      age: "32 tuổi",
+      name: t("homepage.testimonials.customer2.name"),
+      age: t("homepage.testimonials.customer2.age"),
       image: getBeautyImageUrl(150, 150),
-      comment:
-        "Dịch vụ giao hàng nhanh, tư vấn nhiệt tình. Sẽ ủng hộ shop lâu dài!",
+      comment: t("homepage.testimonials.customer2.comment"),
       rating: 5,
     },
     {
-      name: "Hạnh Linh",
-      age: "29 tuổi",
+      name: t("homepage.testimonials.customer3.name"),
+      age: t("homepage.testimonials.customer3.age"),
       image: getBeautyImageUrl(150, 150),
-      comment:
-        "Son lì của shop lên màu rất đẹp, lâu trôi và không khô môi. Thích lắm!",
+      comment: t("homepage.testimonials.customer3.comment"),
       rating: 5,
     },
     {
-      name: "Quang Vinh",
-      age: "35 tuổi",
+      name: t("homepage.testimonials.customer4.name"),
+      age: t("homepage.testimonials.customer4.age"),
       image: getBeautyImageUrl(150, 150),
-      comment:
-        "Sản phẩm chính hãng, giá cả hợp lý. Website dễ sử dụng và thanh toán an toàn.",
+      comment: t("homepage.testimonials.customer4.comment"),
       rating: 5,
     },
     {
-      name: "Thùy Dương",
-      age: "24 tuổi",
+      name: t("homepage.testimonials.customer5.name"),
+      age: t("homepage.testimonials.customer5.age"),
       image: getBeautyImageUrl(150, 150),
-      comment:
-        "Khám phá được nhiều thương hiệu mới nhờ shop. Tư vấn rất chuyên nghiệp!",
+      comment: t("homepage.testimonials.customer5.comment"),
       rating: 5,
     },
   ];
@@ -51,11 +48,10 @@ const Testimonials: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] !text-[var(--text-primary)] mb-4">
-            Đánh Giá Từ Khách Hàng
+            {t("homepage.testimonials.title")}
           </h2>
           <p className="text-lg text-[var(--text-secondary)] !text-[var(--text-secondary)] max-w-2xl mx-auto">
-            Những chia sẻ chân thực từ khách hàng đã trải nghiệm sản phẩm của
-            chúng tôi
+            {t("homepage.testimonials.subtitle")}
           </p>
         </div>
 
