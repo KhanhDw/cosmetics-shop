@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, Navigate, useNavigate, useLocation, useParams } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { AdminThemeProvider } from './contexts/AdminThemeContext';
 import AdminLayout from './components/AdminLayout';
 import Dashboard from './pages/Dashboard';

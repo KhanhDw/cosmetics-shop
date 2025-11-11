@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Filter, User, Mail, Phone, DollarSign, Package, Eye, Edit, Shield, ShieldOff } from 'lucide-react';
+import { Search, Filter, User, Mail, Phone, Eye, Edit, Shield, ShieldOff } from 'lucide-react';
 import { Customer } from '../types';
 
 const Customers: React.FC = () => {

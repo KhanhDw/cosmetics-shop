@@ -3,8 +3,6 @@ import {
   Package, 
   ShoppingCart, 
   DollarSign, 
-  User, 
-  TrendingUp, 
   Calendar,
   BarChart3,
   Users

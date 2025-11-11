@@ -3,7 +3,7 @@ import { Moon, Sun } from 'lucide-react';
 import { useAdminTheme } from '../contexts/AdminThemeContext';
 
 const AdminThemeToggle: React.FC = () => {
-  const { adminTheme, toggleAdminTheme, setAdminTheme } = useAdminTheme();
+  const { adminTheme, toggleAdminTheme } = useAdminTheme();
 
   return (
     <button

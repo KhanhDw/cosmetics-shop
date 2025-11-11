@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   User,
   Mail,
-  Lock,
   Globe,
   Phone,
   MapPin,
@@ -26,7 +25,7 @@ interface AdminProfile {
 }
 
 const AccountConfig: React.FC = () => {
-  const { adminDarkMode } = useAdminTheme();
+  useAdminTheme();
   const [profile, setProfile] = useState<AdminProfile>({
     id: 1,
     name: "Admin User",
